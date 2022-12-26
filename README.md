@@ -115,7 +115,7 @@ Below API's capture event occurred for a user. You can use these API's whenever 
 Example:
 ```swift
 // Required:
-var eventData : EventData = EventData()
+        var eventData : EventData = EventData()
         eventData.setEventName("<EVENT_NAME>")
         eventData.setEventValue("<EVENT_VALUE>")
 
@@ -147,7 +147,7 @@ var eventData : EventData = EventData()
         var eventMapper : EventMapper = EventMapper()
         eventMapper.addEventData(eventData)
         eventMapper.setDeviceInfo(deviceInfo)
-        eventMapper.push()
+        try! eventMapper.push()
 ```
 
 ---
@@ -176,7 +176,22 @@ Below API's help you capture profile of User. User’s profile should be created
 > 2. Setters are  also provided for other fields.
 
 **To save and send User profile data to Wigzo , following method can be used :**
-> `<userProfile_instance>.push()`
+> `try! <userProfile_instance>.push()`
+
+######example:
+```swiift
+var userProfileMapper : UserProfileMapper()
+userProfileMapper = userProfileMapper!.setEmail(email: "<USER_EMAIL>")
+userProfileMapper = userProfileMapper!.setPhone(phone: "<USERPHONE>")
+userProfileMapper = userProfileMapper!.setGender(gender: "<GENDER>")
+userProfileMapper = userProfileMapper!.setOrganization(organization: "<ORGANIZATION_NAME_OF_USER>")
+userProfileMapper = userProfileMapper!.setFullName(fullName: "<USER_FULL_NAME>")
+userProfileMapper = userProfileMapper!.setUserName(userName: "<USERNAME>")
+userProfileMapper = userProfileMapper!.setBirthYear(birthYear: "<BIRTH_YEAR_OF_USER>")
+
+try! userProfileMapper?.push()
+
+```
 
 ####Exceptional Case :
 ####EmailMapper
@@ -185,7 +200,7 @@ in such a cases, create an instance of EmailMapper class.
 
 ```swift
 var userEmailMapper : UserEmailMapper = UserEmailMapper(<email>)
-        userEmailMapper.push()
+      try! userEmailMapper.push()
 ```
 
 > Setter is also provided to set email explicitly.
