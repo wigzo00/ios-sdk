@@ -10,7 +10,7 @@ import Foundation
 public class DeviceMapper : Task {
     
     override func buildUrl() -> String? {
-        return "\(Configuration.BASE_URL.value())\(Configuration.INITIAL_DATA_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
+        return "\(self.getBaseURL())\(Configuration.INITIAL_DATA_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
         
     }
     

@@ -50,7 +50,7 @@ public class UserProfileMapper : Task {
     public func getCustomData() -> Dictionary<String, Any> { return self.customData! }
     
     override func buildUrl() -> String? {
-        return "\(Configuration.BASE_URL.value())\(Configuration.USER_PROFILE_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
+        return "\(self.getBaseURL())\(Configuration.USER_PROFILE_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
     }
     
     override func dict() -> Dictionary<String, Any>? {

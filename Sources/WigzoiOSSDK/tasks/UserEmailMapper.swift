@@ -27,7 +27,7 @@ public class UserEmailMapper : Task {
     }
     
     override func buildUrl() -> String? {
-        return "\(Configuration.BASE_URL.value())\(Configuration.EMAIL_DATA_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
+        return "\(self.getBaseURL())\(Configuration.EMAIL_DATA_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
     }
     
     override func dict() -> Dictionary<String, Any>? {

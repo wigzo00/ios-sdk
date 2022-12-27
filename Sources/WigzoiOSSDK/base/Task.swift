@@ -9,6 +9,14 @@ import Foundation
 
 public class Task {
     
+    func getBaseURL() -> String {
+        let storedBaseURL : String? = Wigzo.getStringFromStorage(forKey: Configuration.BASE_URL.key())
+        if StringUtils.isNotEmpty(storedBaseURL) {
+            return storedBaseURL!
+        }
+        return Configuration.BASE_URL.value()
+    }
+    
     func buildUrl() -> String? {
         return nil
     }
