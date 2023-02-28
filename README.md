@@ -207,3 +207,117 @@ var userEmailMapper : UserEmailMapper = UserEmailMapper(<email>)
 > Setter is also provided to set email explicitly.
 
 >***Note***: Please note that in this case user profile is not getting created and only email id is stored for tracking purposes.
+
+###FIREBASE
+
+#####To integrate Firebase in your App [Click here](https://firebase.google.com/docs/cloud-messaging)
+
+There are few events which are required to be sent to Wigzo in order to show you the correct information about the campaigns triggered from Wigzo Dashboard.
+
+First you need to map FCM token with Wigzo and then register the token.
+
+####Map FCM
+To map FCM with Wigzo, create an instance of FCMMapper class with the FCM token and push it. Wigzo is required to be notiofied about the token every time the token is generated.
+
+####Register FCM
+To Register FCM with Wigzo, create an instance of FCMRegister class with the FCM token and push it. This step also is mandatory whenever a new token is generated.
+
+>***Note***: Map FCM and Register FCM both are required when a new token is generated. Also Map FCM should happen before registering.
+
+Example:
+In your FCM Listener service
+```swift
+
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("Firebase registration token: \(String(describing: fcmToken))")
+
+        let dataDict: [String: String] = ["token": fcmToken ?? ""]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+        
+        sendRegistrationToServer(fcmToken)
+    }
+    
+    private func sendRegistrationToServer(token : String) -> Void {
+        // TODO: Implement this method to send token to your app server.
+        var fcmMapper : FCMMapper = FCMMapper(token)
+        fcmMapper.push()
+
+        var fcmRegister : FCMRegister = FCMRegister(token)
+        fcmRegister.push()
+    }
+```
+
+####Notifying Wigzo about the notification received:
+Notifying Wigzo that the notification has been recieived by the user is important, as it helps us keep track of the data which has been sent by Wigzo to provide you with the important insights about your campaigns. To do so:
+
+- In the `onMessageReceived()` method in your FCM Listener class, crate an instance of NotificationRecieved class. It requires Organization ID and Campaign ID which came along the notification, sent via Wigzo dashboard.
+  Example:
+```swift
+// [START ios_10_message_handling]
+extension AppDelegate: UNUserNotificationCenterDelegate {
+  // Receive displayed notifications for iOS 10 devices.
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              willPresent notification: UNNotification) async
+    -> UNNotificationPresentationOptions {
+    let userInfo = notification.request.content.userInfo
+
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // Messaging.messaging().appDidReceiveMessage(userInfo)
+    // [START_EXCLUDE]
+    // Print message ID.
+    if let messageID = userInfo[gcmMessageIDKey] {
+      print("Message ID: \(messageID)")
+    }
+    // [END_EXCLUDE]
+    // Print full message.
+    print(userInfo)
+    
+    // Notify Wigzo about notification received.
+    var notificationRecieved NotificationRecieved = NotificationRecieved(<ORGANIZATION_ID>, <CAMPAIGN_ID>);
+    notificationRecieved.push();
+    // Organnizaiton ID and Campaign ID can be fetched from the notification data.
+
+    // Change this to your preferred presentation option
+    return [[.alert, .sound]]
+  }
+}
+
+// [END ios_10_message_handling]
+```
+
+####Notifying Wigzo about the notification Clicked:
+Notifying Wigzo about the notification has been clicked by the user is another crucial step as it helps Wigzo collecting the data about the campaigns triggered from the Wigzo Dashboard. To do so:
+Create an instance of NotificationOpen class and pass the fetched `campaignId` as well as the `organizationId`, and push the instance in the queue.
+
+Example:
+
+```swift
+// [START ios_10_message_handling]
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              didReceive response: UNNotificationResponse) async {
+    let userInfo = response.notification.request.content.userInfo
+
+    // [START_EXCLUDE]
+    // Print message ID.
+    if let messageID = userInfo[gcmMessageIDKey] {
+      print("Message ID: \(messageID)")
+    }
+    // [END_EXCLUDE]
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // Messaging.messaging().appDidReceiveMessage(userInfo)
+    // Print full message.
+    print(userInfo)
+    
+    var notificationOpen : NotificationOpen = NotificationOpen(<ORGANIZATION_ID>, <CAMPAIGN_ID>);
+    notificationOpen.push();
+  }
+}
+
+// [END ios_10_message_handling]
+```
+
+>The above code will create the Notification with the `campaignId` and the `organizationId` packed within the notificaiton.

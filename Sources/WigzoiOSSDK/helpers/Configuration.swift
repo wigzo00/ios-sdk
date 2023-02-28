@@ -112,4 +112,7 @@ internal enum Validation : Error {
     case EventMetaDataError(String)
     case UserEmailMapperError(String)
     case UserProfileMapperError(String)
+    case FCMMapperError(String)
+    case FCMRegisterError(String)
+    case NotificationError(String)
 }
