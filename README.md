@@ -23,7 +23,7 @@ A description of this package.
 import SwiftUI
 
 struct YourApp : App {
-    @UIApplicationDelegatAdaptor(AppDelegate.self) var appDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body : some Scene {
         // Your Code goes here
@@ -31,8 +31,8 @@ struct YourApp : App {
 }
 
 class AppDelegate : NSObject, UIApplicationDelegate {
-    func application(_ application : UIApplication, didFinishLaunchingWithOptions launchOptions : [UIApplication.LaunchOptions : Any]? = nil) -> Bool {
-        Wigzo.initialize(orgToken: "<YOUR_ORGANIZATION_TOKEN>")
+    func application(_ application : UIApplication, didFinishLaunchingWithOptions launchOptions : [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        try! Wigzo.initialize(orgToken: "<YOUR_ORGANIZATION_TOKEN>")
         return true
     }
 }
