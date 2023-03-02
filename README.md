@@ -252,7 +252,7 @@ In your FCM Listener service
 ####Notifying Wigzo about the notification received:
 Notifying Wigzo that the notification has been recieived by the user is important, as it helps us keep track of the data which has been sent by Wigzo to provide you with the important insights about your campaigns. To do so:
 
-- In the `onMessageReceived()` method in your FCM Listener class, crate an instance of NotificationRecieved class. It requires Organization ID and Campaign ID which came along the notification, sent via Wigzo dashboard.
+- In the `onMessageReceived()` method in your FCM Listener class, create an instance of NotificationRecieved class. It requires Organization ID and Campaign ID which came along the notification, sent via Wigzo dashboard.
   Example:
 ```swift
 // [START ios_10_message_handling]

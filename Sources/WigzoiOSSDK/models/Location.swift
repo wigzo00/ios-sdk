@@ -13,21 +13,17 @@ public class Location : Model {
     private var stateCode : String? = nil
     private var city : String? = nil
     
-    public func setCountryCode(countryCode : String) -> Location {
+    public func setCountryCode(countryCode : String) -> Void {
         self.countryCode = countryCode
-        return self
     }
-    public func setStateName(stateName : String) -> Location {
+    public func setStateName(stateName : String) -> Void {
         self.stateName = stateName
-        return self
     }
-    public func setStateCode(stateCode : String) -> Location {
+    public func setStateCode(stateCode : String) -> Void {
         self.stateCode = stateCode
-        return self
     }
-    public func setCity(city : String) -> Location {
+    public func setCity(city : String) -> Void {
         self.city = city
-        return self
     }
     
     public func getCountryCode() -> String { return self.countryCode! }

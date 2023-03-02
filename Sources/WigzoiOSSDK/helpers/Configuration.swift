@@ -14,7 +14,7 @@ public enum Configuration {
     var get: (key: String, value: String) {
         switch self {
         case .BASE_URL:
-            return ("baseUrl", "http://app.wigzo.com")
+            return ("baseUrl", "https://app.wigzo.com")
         case .APP_KEY:
             return ("appKey", "APP_KEY")
         case .DEFAULT_APP_VERSION:

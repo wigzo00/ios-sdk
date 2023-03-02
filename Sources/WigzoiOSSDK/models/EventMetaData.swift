@@ -15,11 +15,13 @@ public class EventMetaData : Model {
     private var price : Double?;
     private var url : String?;
     
-    public func setTitle(title : String) -> EventMetaData { self.title = title; return self }
-    public func setDescription(description : String) -> EventMetaData { self.description = description; return self }
-    public func setProductId(productId : String) -> EventMetaData { self.productId = productId; return self }
-    public func setPrice(price : Double) -> EventMetaData { self.price = price; return self }
-    public func setUrl(url : String) -> EventMetaData { self.url = url; return self }
+    public init() {}
+    
+    public func setTitle(title : String) -> Void { self.title = title }
+    public func setDescription(description : String) -> Void { self.description = description }
+    public func setProductId(productId : String) -> Void { self.productId = productId }
+    public func setPrice(price : Double) -> Void { self.price = price }
+    public func setUrl(url : String) -> Void { self.url = url }
     
     public func getTitle() -> String { return self.title! }
     public func getDescription() -> String { return self.description! }

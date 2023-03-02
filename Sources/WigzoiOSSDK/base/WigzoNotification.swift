@@ -15,9 +15,8 @@ public class WigzoNotification : Task {
     
     internal var url : String = ""
     
-    public func setCampaignId(campaignId : Int) -> WigzoNotification {
+    public func setCampaignId(campaignId : Int) -> Void {
         self.campaignId = campaignId
-        return self
     }
     
     public func getCampaignId() -> Int? {
@@ -25,9 +24,8 @@ public class WigzoNotification : Task {
     }
     
     
-    public func setOrganizationId(organizationId : Int) -> WigzoNotification {
+    public func setOrganizationId(organizationId : Int) -> Void {
         self.organizationId = organizationId
-        return self
     }
     
     public func getOrganizationId() -> Int? {

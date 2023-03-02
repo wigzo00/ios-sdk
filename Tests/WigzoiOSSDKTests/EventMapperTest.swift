@@ -22,24 +22,24 @@ final class EventMapperTest: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         metaData = EventMetaData()
-        metaData = metaData!.setProductId(productId : "1")
-        metaData = metaData!.setPrice(price : 40)
-        metaData = metaData!.setDescription(description : "Product description")
-        metaData = metaData!.setTitle(title : "Product Name/Title")
-        metaData = metaData!.setUrl(url : "https://yourwebsite.com/path/to/the/product")
+        metaData!.setProductId(productId : "1")
+        metaData!.setPrice(price : 40)
+        metaData!.setDescription(description : "Product description")
+        metaData!.setTitle(title : "Product Name/Title")
+        metaData!.setUrl(url : "https://yourwebsite.com/path/to/the/product")
         
         location = Location()
-        location = location!.setCountryCode(countryCode : "Country code")
-        location = location!.setStateName(stateName : "Name of state")
-        location = location!.setStateCode(stateCode : "State code")
-        location = location!.setCity(city : "Name of the city")
+        location!.setCountryCode(countryCode : "Country code")
+        location!.setStateName(stateName : "Name of state")
+        location!.setStateCode(stateCode : "State code")
+        location!.setCity(city : "Name of the city")
         
         deviceInfo = DeviceInfo()
-        deviceInfo = deviceInfo!.setDevice(device : "Device name")
-        deviceInfo = deviceInfo!.setOs(os : "Device OS")
-        deviceInfo = deviceInfo!.setOsVersion(osVersion : "OS VERSION")
-        deviceInfo = deviceInfo!.setIpAddress(ipAddress : "Device IP Address")
-        deviceInfo = deviceInfo!.setAppVersion(appVersion : "Your App Version")
+        deviceInfo!.setDevice(device : "Device name")
+        deviceInfo!.setOs(os : "Device OS")
+        deviceInfo!.setOsVersion(osVersion : "OS VERSION")
+        deviceInfo!.setIpAddress(ipAddress : "Device IP Address")
+        deviceInfo!.setAppVersion(appVersion : "Your App Version")
 //        deviceInfo = deviceInfo!.setLocation(location : location!)
         
         eventData = EventData()
@@ -56,7 +56,7 @@ final class EventMapperTest: XCTestCase {
         eventData = eventData?.setEventValue(eventValue: EventMapperTest.EVENT_VALUE)
         eventData = eventData?.setMetadata(metadata: metaData!)
         
-        deviceInfo = deviceInfo?.setLocation(location: location!)
+        deviceInfo?.setLocation(location: location!)
         
         eventMapper = EventMapper()
         

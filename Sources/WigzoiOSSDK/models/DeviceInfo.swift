@@ -26,29 +26,23 @@ public class DeviceInfo : Model {
         self.location = nil
     }
     
-    public func setDevice(device : String) -> DeviceInfo {
+    public func setDevice(device : String) -> Void {
         self.device = device
-        return self
     }
-    public func setOs(os : String) -> DeviceInfo {
+    public func setOs(os : String) -> Void {
         self.os = os
-        return self
     }
-    public func setOsVersion(osVersion : String) -> DeviceInfo {
+    public func setOsVersion(osVersion : String) -> Void {
         self.osVersion = osVersion
-        return self
     }
-    public func setIpAddress(ipAddress : String) -> DeviceInfo {
+    public func setIpAddress(ipAddress : String) -> Void {
         self.ipAddress = ipAddress
-        return self
     }
-    public func setAppVersion(appVersion : String) -> DeviceInfo {
+    public func setAppVersion(appVersion : String) -> Void {
         self.appVersion = appVersion
-        return self
     }
-    public func setLocation(location : Location) -> DeviceInfo {
+    public func setLocation(location : Location) -> Void {
         self.location = location
-        return self
     }
     
     public func getDevice() -> String? {

@@ -14,10 +14,10 @@ public class EventData : Model {
     
     public init() {}
     
-    public init (eventName : String, eventValue : String, metadata : EventMetaData) {
+    public init (eventName : String, eventValue : String, metadata : EventMetaData?) {
         self.eventName = eventName
         self.eventValue = eventValue
-        self.metadata = metadata
+        self.metadata = metadata!
     }
     
     public func setEventName(eventName : String) -> EventData { self.eventName = eventName; return self }
