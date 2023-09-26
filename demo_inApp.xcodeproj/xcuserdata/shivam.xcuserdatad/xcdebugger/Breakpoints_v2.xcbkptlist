@@ -3,4 +3,342 @@
    uuid = "5B303FEF-217C-47CD-9DDE-D5812762FF83"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D1275401-A752-441A-A761-9047D059C470"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "demo_inApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20cdbb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "3044">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20cdbb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "4080">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20ce56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "4080">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20ceb3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "4088">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20c865"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "4084">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20ce37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "1552">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20ce37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "1660">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20ce37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "4080">
+               </Location>
+               <Location
+                  uuid = "D1275401-A752-441A-A761-9047D059C470 - d15952f45c20ce10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "4080">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "demo_inApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c3cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c3cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c309"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c309"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c385"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c385"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "532">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20cd3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20cd3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "532">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - 91c59c4e541034f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.application(_: __C.UIApplication, didFinishLaunchingWithOptions: Swift.Optional&lt;Swift.Dictionary&lt;__C.UIApplicationLaunchOptionsKey, Any&gt;&gt;) -&gt; Swift.Bool"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "1320">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c3ea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "3E0ADC70-95D2-4C7B-8650-7C47331029CB - d15952f45c20c3ea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "524">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

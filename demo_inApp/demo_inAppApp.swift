@@ -8,7 +8,8 @@
 //import SwiftUI
 //
 ////@main
-//struct demo_inAppApp: App {
+//public struct demo_inAppApp: App {
+//    public init() {}
 //    var body: some Scene {
 //        WindowGroup {
 //            ContentView()

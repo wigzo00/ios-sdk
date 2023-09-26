@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		401048962A95E3E100B7E305 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 401048952A95E3E100B7E305 /* FirebaseAnalytics */; };
+		401048982A95E3E100B7E305 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 401048972A95E3E100B7E305 /* FirebaseInstallations */; };
+		4010489A2A95E3E100B7E305 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 401048992A95E3E100B7E305 /* FirebaseMessaging */; };
 		40408E8A2A83BA2A0097C4FA /* WigzoiOSSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 40408E892A83BA2A0097C4FA /* WigzoiOSSDK */; };
 		40408E8C2A83BA4F0097C4FA /* ios-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 40408E8B2A83BA4F0097C4FA /* ios-sdk */; };
-		404188B12A937B2500A4CB04 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 404188B02A937B2500A4CB04 /* FirebaseInstallations */; };
 		408A67402A826BA400711687 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 408A673F2A826BA400711687 /* GoogleService-Info.plist */; };
 		40CC2B662A82512C00A7A809 /* demo_inAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B652A82512C00A7A809 /* demo_inAppApp.swift */; };
 		40CC2B682A82512C00A7A809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B672A82512C00A7A809 /* ContentView.swift */; };
 		40CC2B6A2A82512D00A7A809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CC2B692A82512D00A7A809 /* Assets.xcassets */; };
-		40CC2B6D2A82512D00A7A809 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CC2B6C2A82512D00A7A809 /* Preview Assets.xcassets */; };
 		40CC2B772A82512D00A7A809 /* demo_inAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B762A82512D00A7A809 /* demo_inAppTests.swift */; };
 		40CC2B812A82512D00A7A809 /* demo_inAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B802A82512D00A7A809 /* demo_inAppUITests.swift */; };
 		40CC2B832A82512D00A7A809 /* demo_inAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B822A82512D00A7A809 /* demo_inAppUITestsLaunchTests.swift */; };
-		40CC2B952A82525B00A7A809 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 40CC2B942A82525B00A7A809 /* FirebaseMessaging */; };
 		40CC2B972A8252E700A7A809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B962A8252E700A7A809 /* AppDelegate.swift */; };
-		40D7BFEE2A8F8F3500E5485D /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D7BFED2A8F8F3500E5485D /* Modal.swift */; };
+		B020C95B2AB9E7430098484B /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020C95A2AB9E7430098484B /* SwiftUIView.swift */; };
+		B020C95D2AB9E8090098484B /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020C95C2AB9E8090098484B /* DestinationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,15 +49,15 @@
 		40CC2B652A82512C00A7A809 /* demo_inAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demo_inAppApp.swift; sourceTree = "<group>"; };
 		40CC2B672A82512C00A7A809 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		40CC2B692A82512D00A7A809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		40CC2B6C2A82512D00A7A809 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		40CC2B722A82512D00A7A809 /* demo_inAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demo_inAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40CC2B762A82512D00A7A809 /* demo_inAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demo_inAppTests.swift; sourceTree = "<group>"; };
 		40CC2B7C2A82512D00A7A809 /* demo_inAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demo_inAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40CC2B802A82512D00A7A809 /* demo_inAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demo_inAppUITests.swift; sourceTree = "<group>"; };
 		40CC2B822A82512D00A7A809 /* demo_inAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demo_inAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		40CC2B962A8252E700A7A809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40D7BFED2A8F8F3500E5485D /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		40E16AEB2A86636600869FC7 /* demo-inApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "demo-inApp-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B020C95A2AB9E7430098484B /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		B020C95C2AB9E8090098484B /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +65,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4010489A2A95E3E100B7E305 /* FirebaseMessaging in Frameworks */,
+				401048982A95E3E100B7E305 /* FirebaseInstallations in Frameworks */,
+				401048962A95E3E100B7E305 /* FirebaseAnalytics in Frameworks */,
 				40408E8A2A83BA2A0097C4FA /* WigzoiOSSDK in Frameworks */,
-				404188B12A937B2500A4CB04 /* FirebaseInstallations in Frameworks */,
-				40CC2B952A82525B00A7A809 /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,19 +127,11 @@
 				40CC2B652A82512C00A7A809 /* demo_inAppApp.swift */,
 				40CC2B962A8252E700A7A809 /* AppDelegate.swift */,
 				40CC2B672A82512C00A7A809 /* ContentView.swift */,
-				40D7BFED2A8F8F3500E5485D /* Modal.swift */,
 				40CC2B692A82512D00A7A809 /* Assets.xcassets */,
-				40CC2B6B2A82512D00A7A809 /* Preview Content */,
+				B020C95A2AB9E7430098484B /* SwiftUIView.swift */,
+				B020C95C2AB9E8090098484B /* DestinationView.swift */,
 			);
 			path = demo_inApp;
-			sourceTree = "<group>";
-		};
-		40CC2B6B2A82512D00A7A809 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				40CC2B6C2A82512D00A7A809 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		40CC2B752A82512D00A7A809 /* demo_inAppTests */ = {
@@ -174,9 +168,10 @@
 			);
 			name = demo_inApp;
 			packageProductDependencies = (
-				40CC2B942A82525B00A7A809 /* FirebaseMessaging */,
 				40408E892A83BA2A0097C4FA /* WigzoiOSSDK */,
-				404188B02A937B2500A4CB04 /* FirebaseInstallations */,
+				401048952A95E3E100B7E305 /* FirebaseAnalytics */,
+				401048972A95E3E100B7E305 /* FirebaseInstallations */,
+				401048992A95E3E100B7E305 /* FirebaseMessaging */,
 			);
 			productName = demo_inApp;
 			productReference = 40CC2B622A82512C00A7A809 /* demo_inApp.app */;
@@ -251,8 +246,8 @@
 			);
 			mainGroup = 40CC2B592A82512C00A7A809;
 			packageReferences = (
-				40CC2B8F2A82525B00A7A809 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				40408E882A83BA2A0097C4FA /* XCRemoteSwiftPackageReference "ios-sdk" */,
+				401048942A95E3E100B7E305 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 40CC2B632A82512C00A7A809 /* Products */;
 			projectDirPath = "";
@@ -270,7 +265,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40CC2B6D2A82512D00A7A809 /* Preview Assets.xcassets in Resources */,
 				40408E8C2A83BA4F0097C4FA /* ios-sdk in Resources */,
 				40CC2B6A2A82512D00A7A809 /* Assets.xcassets in Resources */,
 				408A67402A826BA400711687 /* GoogleService-Info.plist in Resources */,
@@ -300,8 +294,9 @@
 			files = (
 				40CC2B972A8252E700A7A809 /* AppDelegate.swift in Sources */,
 				40CC2B682A82512C00A7A809 /* ContentView.swift in Sources */,
+				B020C95D2AB9E8090098484B /* DestinationView.swift in Sources */,
+				B020C95B2AB9E7430098484B /* SwiftUIView.swift in Sources */,
 				40CC2B662A82512C00A7A809 /* demo_inAppApp.swift in Sources */,
-				40D7BFEE2A8F8F3500E5485D /* Modal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,10 +452,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = demo_inApp/demo_inApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"demo_inApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "demo_inApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = U52WCD866T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -470,11 +466,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "ios.demo-inApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -488,10 +485,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = demo_inApp/demo_inApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"demo_inApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "demo_inApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = U52WCD866T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -501,11 +499,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "ios.demo-inApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -523,7 +522,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U52WCD866T;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ios.demo-inAppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -543,7 +542,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U52WCD866T;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ios.demo-inAppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -632,6 +631,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		401048942A95E3E100B7E305 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		40408E882A83BA2A0097C4FA /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/wigzo00/ios-sdk.git";
@@ -640,31 +647,28 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		40CC2B8F2A82525B00A7A809 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		401048952A95E3E100B7E305 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 401048942A95E3E100B7E305 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		401048972A95E3E100B7E305 /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 401048942A95E3E100B7E305 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		401048992A95E3E100B7E305 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 401048942A95E3E100B7E305 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		40408E892A83BA2A0097C4FA /* WigzoiOSSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 40408E882A83BA2A0097C4FA /* XCRemoteSwiftPackageReference "ios-sdk" */;
 			productName = WigzoiOSSDK;
-		};
-		404188B02A937B2500A4CB04 /* FirebaseInstallations */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 40CC2B8F2A82525B00A7A809 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseInstallations;
-		};
-		40CC2B942A82525B00A7A809 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 40CC2B8F2A82525B00A7A809 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

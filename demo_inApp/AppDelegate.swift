@@ -4,64 +4,6 @@
 //
 //  Created by Shivam on 08/08/23.
 //
-
-//import SwiftUI
-//import FirebaseCore
-//
-//
-//class AppDelegate: NSObject, UIApplicationDelegate {
-//  func application(_ application: UIApplication,
-//                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//    FirebaseApp.configure()
-//
-//    return true
-//  }
-//}
-//
-//@main
-////struct YourApp: App {
-//  // register app delegate for Firebase setup
-//struct demo_inAppApp: App {
-//    var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-//        }
-//    }
-//}
-//  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-//
-//
-////  var body: some Scene {
-////    WindowGroup {
-////      NavigationView {
-////        ContentView()
-////      }
-////    }
-////  }
-//}
-//import SwiftUI
-//import FirebaseCore
-//
-//@main
-//struct demo_inApp: App {
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-//
-//    var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-//        }
-//    }
-//}
-//
-//class AppDelegate: NSObject, UIApplicationDelegate {
-//    func application(_ application: UIApplication,
-//                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        FirebaseApp.configure()
-//        return true
-//    }
-//
-//
-//}
 import UIKit
 import Firebase
 import UserNotifications
@@ -71,242 +13,160 @@ import WigzoiOSSDK
 
 
 
-
 @main
-struct demo_inApp: App {
+public struct demo_inApp: App {
+
+    public init() {}
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    var body: some Scene {
+     public var body: some Scene {
         WindowGroup {
             ContentView()
+                .onOpenURL { url in
+                    print("url.absoluteString",url)
+                }
+                
         }
-    }
-}
-
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UNUserNotificationCenter.current().delegate = self
-
-        try! Wigzo.initialize(orgToken: "6Srd_EenR5qIIKuQvE Za0g")
-
-
-
-        FirebaseApp.configure()
-       // Messaging.messaging().delegate = self
        
+    }
+}
+class NotificationReceived {
+    let campaignId: Int
+    let organizationId: Int
 
+    init(campaignId: Int, organizationId: Int) {
+        self.campaignId = campaignId
+        self.organizationId = organizationId
+    }
 
+    func push() {
+        // Implement the logic to handle the push notification
+        // This could include displaying the notification, opening a specific view, etc.
+        // You should customize this method according to your requirements
+        print("Received push notification for campaign \(campaignId) from organization \(organizationId)")
+    }
+}
 
-        // InAppMessaging.inAppMessaging().delegate = self
-        return true
-        //        var eventMapper = EventMapper()
-        //        var eventData = EventData()
-        //
-        //        eventData.setEventName(eventName: "view")
-        //        eventData.setEventValue(eventValue: "productView")
-        //
-        //        eventMapper.setEventData(eventData: eventData)
-        //        try! eventMapper.push()
-        //        eventMapper.setEventData(eventData: eventData)
-        //
-        //        var userProfileMapper = UserProfileMapper()
-        //        userProfileMapper = userProfileMapper.setEmail(email: "shivam.ratnam@wigzo.com")
-        //        userProfileMapper = userProfileMapper.setPhone(phone: "7667781946")
-        //        userProfileMapper = userProfileMapper.setGender(gender: "Male")
-        //        userProfileMapper = userProfileMapper.setOrganization(organization: "Wigzo")
-        //        userProfileMapper = userProfileMapper.setFullName(fullName: "Shivam Ratnam")
-        //        userProfileMapper = userProfileMapper.setUserName(userName: "shivam")
-        //        userProfileMapper = userProfileMapper.setBirthYear(birthYear: "1998")
-        //
-        //        try! userProfileMapper.push()
-        //        let userEmailMapper = UserEmailMapper(email: "shivam.ratnam@wigzo.com")
-        //        try! userEmailMapper.push()
+public class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
+    let helper = HelperClass()
+    
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        try! Wigzo.initialize(orgToken: "MZ-bpDDYTIeem9nz8P4Icg", forceInit: true)
         
-      
-
-
-
-    }
-}
-
-
-
-
-
-
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print("Device Token:", token)
-    }
-
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications:", error.localizedDescription)
+        
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in
+                UNUserNotificationCenter.current().delegate = self
+                
+            }
+            
+        )
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: Notification.Name.MessagingRegistrationTokenRefreshed, object: nil)
+        
+        application.registerForRemoteNotifications()
+        return true
     }
 
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-
-
-        let fcmMapper : FCMMapper = FCMMapper(registrationId: fcmToken!)
-        try! fcmMapper.push()
-
-        let fcmRegister : FCMRegister = FCMRegister(registrationId: fcmToken!)
-        try! fcmRegister.push()
+    
+    func application(_application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
     }
-//        func messaging(_ messaging: Messaging, didReceive remoteMessage: [AnyHashable: Any]) {
-//               handleNotification(data: remoteMessage)
-//           }
-    //
-    //       func handleNotification(data: [AnyHashable: Any]) {
-    //           if let aps = data["aps"] as? [String: Any],
-    //              let alert = aps["alert"] as? [String: Any],
-    //              let title = alert["title"] as? String,
-    //              let body = alert["body"] as? String {
-    //
-    //               let contentView = Template1(title: title, description: body)
-    //               // Now you can use this contentView to display the dynamic notification data in your app
-    //               // You might present it modally or integrate it into your app's UI hierarchy
-    //           }
-    //       }
-    //
-    //       // ... (other delegate methods)
-    //   }
-    // Implement other delegate methods as needed
-
-    // Handle notifications received while the app is in the foreground
-
-    //    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    //        // Customize how the notification is displayed when the app is active
-    //      //  print("hello from firebase notification listner")
-    //        completionHandler([.badge, .sound, .banner])
-    //    }
-    //
-    //  //   Handle notifications when the user taps on them
-    //    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    //        // Handle the notification content
-    //       // print("hello from firebase notification listner")
-    //        completionHandler()
-    //
-    //    }
-
-
-extension AppDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
-
-        let image_url = userInfo["image_url"] as? String
-        let organizationIdStr = (userInfo["organizationId"] as? String)!
-        let title = userInfo["title"] as? String
-        let body = userInfo["body"] as? String
-        let layoutId = userInfo["layoutId"] as? String
-        let isWigzoNotification = userInfo["isWigzoNotification"] as? String
-        let intent_data = userInfo["intent_data"] as? String
-        let campaignIdStr = (userInfo["id"] as? String)!
-        let campaignUuid = userInfo["uuid"] as? String
-       Messaging.messaging().appDidReceiveMessage(userInfo)
-        if let messageID = userInfo["messageIDKey"] as? String {
-            print("Message ID: \(messageID)")
-    }
-   //   Template1(title: title!, description: body!,imageUrl: URL(string: "image_url")!)
-        print(userInfo)
-       // showSwiftUIPopup()
-        showSwiftUISubview()
-        if let organizationID = Int(organizationIdStr),
-           let campaignID = Int(campaignIdStr) {
-
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: .utf8) {
             do {
-                let notificationRecieved = NotificationRecieved(campaignId: organizationID, organizationId: campaignID)
-                try notificationRecieved.push()
-                completionHandler([.banner, .badge, .list, .sound])
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]
+                return json
             } catch {
-                print("Error while pushing notification received: \(error)")
+                print("Something went wrong")
             }
-        }
-    }
-}
-    func showSwiftUIPopup() {
-
-
-
-             let window = UIApplication.shared.keyWindow
-        let popupView = Template1(title:"hii", description:"shivam",imageUrl: URL(string: "")!)
-
-            let popupViewController = UIHostingController(rootView: popupView)
-
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-            alertController.setValue(popupViewController, forKey: "contentViewController")
-
-            if let rootViewController = window?.rootViewController {
-                rootViewController.present(alertController, animated: true, completion: nil)
-            }
-        }
-func showSwiftUISubview() {
-    // Create your SwiftUI subview
-    let swiftUISubview = Template1(title:"hii", description:"prashant1",imageUrl: URL(string: "")!)// Replace with your SwiftUI subview
-
-    // Find the currently visible view controller
-    if let topViewController = findTopViewController() {
-        // Create a UIHostingController for the SwiftUI subview
-        let hostingController = UIHostingController(rootView: swiftUISubview)
-
-        // Add the hosting controller's view as a subview to the visible view controller's view
-        topViewController.view.addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.leadingAnchor.constraint(equalTo: topViewController.view.leadingAnchor, constant: 20),
-            hostingController.view.trailingAnchor.constraint(equalTo: topViewController.view.trailingAnchor, constant: -20),
-            hostingController.view.centerYAnchor.constraint(equalTo: topViewController.view.centerYAnchor), // Center vertically
-            hostingController.view.heightAnchor.constraint(equalToConstant: 300)
-        ])
-
-        // Associate the hosting controller with the visible view controller
-        topViewController.addChild(hostingController)
-        hostingController.didMove(toParent: topViewController)
-    }
-}
-
-
-    func findTopViewController() -> UIViewController? {
-        let window = UIApplication.shared.keyWindow
-        if let rootViewController = window?.rootViewController {
-            var topViewController = rootViewController
-            while let presentedViewController = topViewController.presentedViewController {
-                topViewController = presentedViewController
-            }
-            return topViewController
         }
         return nil
     }
+    public func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                       willPresent notification: UNNotification,
+                                       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+       
 
+let userInfo = notification.request.content.userInfo as? [String: Any]
 
+        if let typeDict = userInfo?["type"] as? String,
+           let pushType = convertStringToDictionary(text: typeDict),
+           let organizationIdStr = userInfo?["organizationId"] as? String,
+           let campaignIdStr = userInfo?["id"] as? String {
 
+            let image_url = userInfo?["image_url"] as? String
+            let title = userInfo?["title"] as? String
+            let body = userInfo?["body"] as? String
+            let layoutId = userInfo?["layoutId"] as? String
+            let isWigzoNotification = userInfo?["isWigzoNotification"] as? String
+            let intent_data = userInfo?["intent_data"] as? String
+            let campaignUuid = userInfo?["uuid"] as? String
 
+            Messaging.messaging().appDidReceiveMessage(userInfo!)
+            if let messageID = userInfo?["messageIDKey"] as? String {
+                print("Message ID: \(messageID)")
+            }
 
+            if let pushTypeValue = pushType["pushType"] as? String {
+                if pushTypeValue == "inapp" {
+                    // Generate an in-app notification
+                    helper.showSwiftUISubview(imageUrlStr: image_url!, organizationIdStr: organizationIdStr,
+                                              title: title!, body: body!, layoutId: layoutId!, isWigzoNotification: isWigzoNotification!,
+                                              intent_data: intent_data!, campaignIdStr: campaignIdStr, campaignUuid: campaignUuid!)
+                } else if pushTypeValue == "push" {
+                    // Generate a push notification
+                    // Handle push notification logic here
 
+                    // Complete the handler to display the push notification
+                    completionHandler([.banner, .badge, .list, .sound])
+                } else {
+                    // Handle other pushType values or do nothing
+                    helper.showSwiftUISubview(imageUrlStr: image_url!, organizationIdStr: organizationIdStr,
+                                              title: title!, body: body!, layoutId: layoutId!, isWigzoNotification: isWigzoNotification!,
+                                              intent_data: intent_data!, campaignIdStr: campaignIdStr, campaignUuid: campaignUuid!)
+                    completionHandler([.banner, .badge, .list, .sound])
 
+                }
+            } else {
+                // Handle the case where "pushType" is not found or do nothing
+            }
 
+            if let organizationID = Int(organizationIdStr),
+               let campaignID = Int(campaignIdStr) {
 
+                do {
+                    // Handle both push and in-app notifications here
+                    let notificationReceived = NotificationReceived(campaignId: organizationID, organizationId: campaignID)
+                    try notificationReceived.push()
+                } catch {
+                    print("Error while pushing notification received: \(error)")
+                }
+            }
+        }
+    }
+    public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+            let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+            print("Device Token:", token)
+        }
 
+    public func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+            print("Failed to register for remote notifications:", error.localizedDescription)
+       }
+   
 
-
-
-extension AppDelegate{
-        func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                    didReceive response: UNNotificationResponse,
-                                    withCompletionHandler completionHandler: @escaping () -> Void) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                           didReceive response: UNNotificationResponse,
+                                           withCompletionHandler completionHandler: @escaping () -> Void) {
             let userInfo = response.notification.request.content.userInfo
             print(userInfo)
-
-//            image_url
-//            organizationId
-//            title
-//            body
-//            layoutId
-//            isWigzoNotification
-//            intent_data
             if let organizationIDString = userInfo["organizationId"] as? String,
                let campaignIDString = userInfo["campaignID"] as? String,
                let organizationID = Int(organizationIDString),
@@ -326,7 +186,101 @@ extension AppDelegate{
                 // Handle the case where conversion failed
             }
         }
+    @objc func refreshToken(notification: Notification) {
+        }
     }
+    extension AppDelegate: MessagingDelegate {
+        public func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+            // Handle the received FCM token here
+            print("Received FCM token: \(fcmToken ?? "No token")")
+
+            // You can perform any necessary actions with the token, such as sending it to your server.
+            // For example, you can create and send a request to update the token on your server.
+            let fcmMapper = FCMMapper(registrationId: fcmToken ?? "")
+            try? fcmMapper.push()
+
+            let fcmRegister = FCMRegister(registrationId: fcmToken ?? "")
+            try? fcmRegister.push()
+        }
+    }
+//extension AppDelegate {
+//
+//    public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+//
+//        print(url.absoluteString)
+//        return true
+//    }
+//}
+
+protocol DeeplinkHandlerProtocol {
+    func canOpenURL(_ url: URL) -> Bool
+    func openURL(_ url: URL)
+}
+
+final class AccountDeeplinkHandler: DeeplinkHandlerProtocol {
+    private weak var rootViewController: UIViewController?
+    
+    init(rootViewController: UIViewController?) {
+        self.rootViewController = rootViewController
+    }
+    
+    func canOpenURL(_ url: URL) -> Bool {
+        return url.absoluteString == "demoInapp://DestinationView"
+    }
+    
+    func openURL(_ url: URL) {
+        guard canOpenURL(url) else {
+            return
+        }
+        
+        // Instantiate your view controller using the appropriate type
+        let hostingController = UIHostingController(rootView: DestinationView())
+        rootViewController?.present(hostingController, animated: true)
+    }
+}
+protocol DeeplinkCoordinatorProtocol {
+    @discardableResult
+    func handleURL(_ url: URL) -> Bool
+}
+
+final class DeeplinkCoordinator: DeeplinkCoordinatorProtocol {
+    static let shared = DeeplinkCoordinator()
+    var handlers: [DeeplinkHandlerProtocol] = []
+    
+    func registerHandler(_ handler: DeeplinkHandlerProtocol) {
+        handlers.append(handler)
+    }
+    
+    @discardableResult
+    func handleURL(_ url: URL) -> Bool {
+        guard let handler = handlers.first(where: { $0.canOpenURL(url) }) else {
+            return false
+        }
+        handler.openURL(url)
+        return true
+    }
+}
+
+
+extension AppDelegate {
+    static var window: UIWindow?
+    static var deeplinkCoordinator: DeeplinkCoordinatorProtocol = DeeplinkCoordinator.shared as DeeplinkCoordinatorProtocol
+    
+    var rootViewController: UIViewController? {
+        return AppDelegate.window?.rootViewController
+    }
+}
+extension AppDelegate {
+    public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        // Handle the URL using the DeeplinkCoordinator
+        return AppDelegate.deeplinkCoordinator.handleURL(url)
+    }
+}
+
+
+
+
+
 
 
 
