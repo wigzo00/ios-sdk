@@ -155,17 +155,17 @@ struct ContentView: View {
                         Text("Preview 7")
                     }
                     
-                    NavigationLink(destination: DestinationView()) {
-                        Button(action:{
-                            isNavigationActive = true
-                        }){
-                            Text("Navigate to Destination View")
-                                .foregroundColor(.black)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.green) .frame(width: 250, height: 50))
-                        }
-                        .padding()
-                        //  Spacer()
-                    }
+//                    NavigationLink(destination: DestinationView()) {
+//                        Button(action:{
+//                            isNavigationActive = true
+//                        }){
+//                            Text("Navigate to Destination View")
+//                                .foregroundColor(.black)
+//                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.green) .frame(width: 250, height: 50))
+//                        }
+//                        .padding()
+//                        //  Spacer()
+//                    }
                     
                 }
                 .listStyle(GroupedListStyle())

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "flynas-firebase",
+  "private_key_id": "f588a462ea804a3ff851d656eb5699f1a8d6b3d7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDpE9XhOSMr+0cS\n/6LSy52VnK6Gca68ObQxrSjteyDHxHBRiu186Hs5zNBqWtb6u/r75IZj3yKpOT8J\nGUIz5hx1P0PLtqesuumFTCjzRklDH9j2eib4sWEirZA0Tfyp08/ObYqCT7oq+esz\ntdBXHUpSMvF9JDP9yyGzHhEUl6/BEnt5LZnbtMcPqjsZtNyu+fkiZHGou0I5Js8w\nP1vRxU0OslSoLuObWgHJwaVQ4cVgdGtW8cOQIKb6+06v2q1SzEO/OrxflOmiVt2J\ngPvfLXyavS1/d3OnrioXoLhg97UP092miBcvqCkX7CCNso9ypMm1f+vYCoBKm692\nmClN98dtAgMBAAECggEAOI1xCEBCWfISuTfgrG/uMPZ+3C0qPg5sO99tfk2xUvdF\nX2urmvKXr5sT+LJI1jaVO9gjiYkDEndK5azExO3w+rvaecu8XGtPrOGhUAG+VfSc\nwpU57n6veGgPhLlldFlp4wbuJBcvLy1LldToE7MOLOqicIA/wzUt3JWPhGUXpmsc\niz671PmM7f7NqDxkoLoCK/LnWphAigADuJB5KnOIqhHFS4kc5dTXXcn1JqltvzB7\nUJ/BAmtKxLtACiY6fRKNLSU2Zd4VXA7hfLY6fYhZJP15yLe5gejsMr7YaWEQubq3\n7ioZjnTU6JCaviwKLGgyWOi7nB/fgU/qJ4q+sIrvQQKBgQD6Ga2U+Qwv6UF/w0lK\nqbekkZa5ai2WrAplyqUxSJpkJRgZY81dIGnT6ZxO6Qb5nD+kL3QBwCLWVITHxFJV\n1jwyUHDsepmrnJ9J0lGIJcVNPsOHYmk/L/aTZ6zfBDUei3UlQftQUQRLVRT87YhN\nHr4sOzQJXJB4gkCaEJxjLTs4TQKBgQDuk1vgFmcqSYBc4irvRdB4lH00A6tQgbZC\nYSGvTF/JFTlbd+x6UXiZkYdXga0l/fMyuhCBoW2QYdkpc0KGlnUhWgOjr10WyVmA\nSl41ap7azzHQc3eiaAN6Y/Kr2sa5R0I45+LOknwtEzT51gEGEdL6aorKqn6RebBU\nM6KY5I5boQKBgQCWeqy+Xbq/eRE31kBa9BLSqeaOWR xk886twGf0Z0K9zrPZUvtV\ndRM3te+eawcPWLvSBds+0mQjoWbi63S+wNAnVc8b+ghMAUi2Gh2EVXWJLKJo6wV4\nR1uNBWw2I0nyvuYVLMYRZS24RdEC/chs3np+EoEUwOUMHRLRn/z4j1Z6YQKBgBJg\nV1tTXm7ram+9HAGCJySii2JORgvVcex6/tU51MbwU5KwEg7554gspXggDO44OVtW\n6Z6SiJXuc4O11RH41NzUyiL5hvoSWEqBb/A9Xi8MdpHP0w83Y80xlaeXGmd7DabE\ndbvjnJz8NcBos3t8M/wF6NrjdwxNiz9xGr0cHbsBAoGAUIqT1hUdZeEhvllznW7P\n4ZlBxlCiAEUGOPLKr2XSJ2Q2nR84fNlWnH4FbLs5imknPJLoDjgq/hPAnrHg+9Kg\noltqtVwfa4Uo2wxJmkDHxJ5setx59zyaSNKSg+j150uAk7TVkKhYt43s1EAqftac\nosU43xevkzgJUI1+BndVEJw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-crashreporting-mh9ob@flynas-firebase.iam.gserviceaccount.com",
+  "client_id": "107404254229015426894",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-crashreporting-mh9ob%40flynas-firebase.iam.gserviceaccount.com"
+}
