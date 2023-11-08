@@ -92,6 +92,8 @@ struct ContentView: View {
     @State private var selectedPreview: PreviewItem?
     @State private var isTemplate1Presented = false
     @State private var isNavigationActive = false
+    @State private var isUIKitViewControllerPresented = false
+
     
     
     var body: some View {
@@ -102,9 +104,24 @@ struct ContentView: View {
         VStack{
             NavigationView{
                 List {
+                    
+//                    Button(action: {
+//                        
+////                        selectedPreview = PreviewItem(id: 001)
+//                        requestNotificationPermission()
+//                        generateFCMTokenAndSendNotification()
+//                        isUIKitViewControllerPresented = true
+//                    }) {
+//                        Text("Template 1")
+//                    }.sheet(isPresented: $isUIKitViewControllerPresented) {
+//                        UIKitViewControllerWrapper()
+//                    }
+                    
+                    
+                    
                     Button(action: {
                         
-                        selectedPreview = PreviewItem(id: 001)
+//                        selectedPreview = PreviewItem(id: 001)
                         requestNotificationPermission()
                         generateFCMTokenAndSendNotification()
                         isTemplate1Presented = true
@@ -155,6 +172,7 @@ struct ContentView: View {
                         Text("Preview 7")
                     }
                     
+                    
 //                    NavigationLink(destination: DestinationView()) {
 //                        Button(action:{
 //                            isNavigationActive = true
@@ -204,7 +222,7 @@ struct ContentView: View {
                             
                         case 7:
                             Template7( title: "Dynamic Title", description: "Dynamic Description", imageUrl: URL(string: "image_url")!, isPresented: $isTemplate1Presented )
-                            
+                        
                         default:
                             EmptyView()
                         }
@@ -230,7 +248,9 @@ struct ContentView: View {
     
     
     
-    
+    func openCustomView() {
+        print("root vc === \(UIApplication.shared.windows)")
+    }
     
     
     public func requestNotificationPermission() {

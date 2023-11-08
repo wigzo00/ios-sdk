@@ -11,6 +11,7 @@ import FirebaseMessaging
 import SwiftUI
 import WigzoiOSSDK
 import UserNotificationsUI
+import Foundation
 
 
 //@available(iOS 16.0, *)
@@ -32,18 +33,18 @@ import UserNotificationsUI
 //@UIApplicationMain
  class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate{
     let helper = HelperClass()
-     var window: UIWindow?
-     var notificationDataObject: NotifcationDataModel?
-
-     
+ 
      let notificationJson = """
 {
   "notification": {
-    "mutable-content ": 1,
+    "mutable-content": 1,
     "title": "Title goes here"
   },
   "data": {
-    "type": "{\"type\":\"Text Only\",\"pushType\":\"inApp\"}",
+     "type": {
+     "type":"Text Only",
+     "pushType":"inApp"
+     },
     "id": 1280,
     "title": "Title goes here",
     "notificationId": 0,
@@ -56,7 +57,10 @@ import UserNotificationsUI
     "organizationId": 2,
     "layoutId": "001",
     "isWigzoNotification": true,
-    "button": "[{\"buttonUrl\":\"\",\"buttonName\":\"Button\",\"buttonAction\":\"\",\"buttonFontColor\":\"\",\"buttonFontSize\":\"14px\",\"buttonColor\":\"\"}]",
+    "button": [{
+       "buttonUrl":"","buttonName":"Button","buttonAction":"","buttonFontColor":"","buttonFontSize":"14px","buttonColor":""
+
+      }],
     "notification_details": {
       "buttonOrientation": "horizontal",
       "templateOrientation": "top",
@@ -72,12 +76,12 @@ import UserNotificationsUI
   },
   "apns": {
     "fcm_options": {
-      "image": "[\"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg\"]"
+      "image": [\"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg\"]
     },
     "payload": {
       "aps": {
         "alert": {
-          "mutable-content ": 1,
+          "mutable-content": 1,
           "title": "Title goes here"
         },
         "mutable-content": true
@@ -89,22 +93,23 @@ import UserNotificationsUI
     "dzuL7Z9jSkyZMnLAk35M3n:APA91bFvmaTYUGtc6KXd8OrH_NZQj2cDrTxh-ZthXPaH_8rwpotNgD-3FjFbwmJXPcF0C65-TL-YmclUd76qHwGKdwxFzVtrcjCA747v772IL7akW7jOK3Yh_CPCdS1YN8liISVGRuTg",
     "fw3plTNMk0ewo573Q2-VD3:APA91bE399tNB03sH0vHQy2gzA6sF869DwSWQfylId2meeFehI3CyT2Zhv6VCSFQ4VR30_3ZWvnogGFnhwq1_yuNcJ8nouDJXHaBFBRZOQtJ8MYgTiSuhbmQ3rHw-ujSj3yQ0ZEIFDaQ",
     "cW4odRtCr06AvU_oPQzX-z:APA91bGHjMz0k10dmENs2068ETfHNKbSXKiZ72LgJN9qROjy9ZUFE0Fy4Lx432-dBuwTZx2zwQdjlCrFbxWZCzbmKlTUgZh59qJ7r-MlJARsGEMLVrOOmQDeO35EHwNl22OenIPQp1La",
-    "fPm2vToHTjWCPWY9ZQulX0:APA91bEOZ25woJpKxb22jheZzaXVtdUTiPud8XvuVwX6-yeTONL7-JTm0ZXeBY9WhbHUpztM5_9WqHey26-0cyeWQShK1bGgYJRh9otzAWO17FzG6bQFFrYo3OS_TI9AXyCEE7HEt3ET",
-    "csBqXw2zTNqcPp1CEf7Z-B:APA91bFl367C_NxfKCpnYQGaK9HBpyGrbPVYMzHew7xSg5OK2rt3OLcuqWaKYnqoLrYp2-C4Urys-rvDXEY7OLUvU4Ot1Rwd_rbBgo-oyfnCTkcBpVKsgjmX0SVsRFEJnTgN3gjcfBrU",
+    "fPm2vToHTjWCPWY9ZQulX0:APA91bEOZ25woJpKxb22jheZzaXVtdUTiPud8XvuVwX6-yeTONL7-JTm0ZXeBY9WhbHUpztM5_9WqHey26-0cyeWQShK1bGgYJRh9tztzAWO17FzG6bQFFrYo3OS_TI9AXyCEE7HEt3ET",
+    "csBqXw2zTNqcPp1CEf7Z-B:APA91bFl367C_NxfKCpnYQGaK9HBpyGrbPVYMzHew7xSg5OK2rt3OLcuq6GnyqoLrYp2-C4Urys-rvDXEY7OLUvU4Ot1Rwd_rbBgo-oyfnCTkcBpVKsgjmX0SVsRFEJnTgN3gjcfBrU",
     "cKTW3CYJVUsfttyEJnMLPp:APA91bF6Emx0xFq9kGrsGZt3Y4MhjSgCzU16j_Oq6mJKwJwSe5rKeAB4Un3G7iUFnJTZBzJS-evoheY3nThQm25DVq-FNtmxbGS3ONDqC8e5Mb4ui5R21sOrKbyD0hS1CRHlbRF1ilfE"
   ]
 }
 """
     
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+      
         try! Wigzo.initialize(orgToken: "6Srd_EenR5qIIKuQvEZa0g", forceInit: true)
         FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         Messaging.messaging().delegate = self
-        
-//        let pushNotification = PushNotification()
-//        pushNotification.sendLocalNotificationWithFile()
-         
+//
+        let pushNotification = PushNotification()
+        pushNotification.sendLocalNotificationWithFile()
+//
          // Present the in-app notification view controller
         
          coverJsonTOModel()
@@ -123,6 +128,11 @@ import UserNotificationsUI
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: Notification.Name.MessagingRegistrationTokenRefreshed, object: nil)
         
         application.registerForRemoteNotifications()
+         DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
+                     // Code to be executed after the delay
+             self.helper.showInAppNotificationViewController(payloadJson: self.notificationJson)
+                 }
+
         return true
     }
 
@@ -197,18 +207,19 @@ import UserNotificationsUI
                  if let pushTypeValue = pushType["pushType"] as? String {
                      if pushTypeValue == "inapp" {
 
-                         let inAppNotificationVC = InAppNotificationViewController()
-                         inAppNotificationVC.payload = notificationDataObject
-
-                         // Present or push the InAppNotificationViewController
-                         if let rootViewController = window?.rootViewController {
-                                                 rootViewController.present(inAppNotificationVC, animated: true, completion: nil)
-                                             }
-                                 
-                                 // Create a new UIWindow
+                        // let inAppNotificationVC = InAppNotificationViewController(image: <#UIImage#>)
+//                         inAppNotificationVC.payload = notificationDataObject
+//
+//                         // Present or push the InAppNotificationViewController
+//                         if let rootViewController = window?.rootViewController {
+//                                                 rootViewController.present(inAppNotificationVC, animated: true, completion: nil)
+//                                             }
+//
+//                                //  Create a new UIWindow
 //                                 let inAppNotificationWindow = UIWindow(frame: UIScreen.main.bounds)
 //                                 inAppNotificationWindow.windowLevel = .alert
-//                                 inAppNotificationWindow.rootViewController = inAppNotificationViewController
+//                                 //inAppNotificationWindow.rootViewController = inAppNotificationViewController
+//
 //
 //                                 // Make the window visible
 //                                 inAppNotificationWindow.makeKeyAndVisible()
@@ -349,17 +360,56 @@ import UserNotificationsUI
         completionHandler()
 
         }
-         func coverJsonTOModel() {
-             let notiData = notificationJson.data(using: .utf8)!
+//         func coverJsonTOModel() {
+//             if let jsonData = notificationJson.data(using: .utf8) {
+//                 do {
+//                     let root = try JSONDecoder().decode(Root.self, from: jsonData)
+//                     // Access your data model properties like this:
+////                     let notification = root.notification
+////                     let data = root.data
+////                     let apns = root.apns
+////                     let registrationIds = root.registration_ids
+//                     print("conevrted notification object ===== \(root)")
+//
+//                 } catch {
+//                     print("error on converting json to data model ==== \(error.localizedDescription)")
+//                 }
+//             }
+//
+//         }
+     
+     func coverJsonTOModel() {
+         if let jsonData = notificationJson.data(using: .utf8) {
              do {
-                 let notiObj = try JSONDecoder().decode(NotifcationDataModel.self, from: notiData)
-                 print("conevrted notification object ===== \(notiObj)")
+                 if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                     // Now you have the JSON data as a dictionary in the jsonObject variable.
+                     // You can access its values as needed.
+                     if let notification = jsonObject["notification"] as? [String: Any] {
+                         if let mutableContent = notification["mutable-content"] as? Int,
+                            let title = notification["title"] as? String {
+                             // Access mutableContent and title here
+                         }
+                     }
+                     
+                     if let data = jsonObject["data"] as? [String: Any] {
+                         // Parse data object and its properties
+                     }
+                     
+                     if let apns = jsonObject["apns"] as? [String: Any] {
+                         // Parse apns object and its properties
+                     }
+                     
+                     if let registrationIds = jsonObject["registration_ids"] as? [String] {
+                         // Parse registrationIds array
+                     }
+                     print("converted JSON === \(jsonObject)")
+                 }
+             } catch {
+                 print("Error parsing JSON: \(error)")
              }
-             catch {
-                 print("error on converting json to data model ==== \(error.localizedDescription)")
-             }
-             
          }
+     }
+
     @objc func refreshToken(notification: Notification) {
         }
          
@@ -411,9 +461,6 @@ class NotificationReceived {
         print("Received push notification for campaign \(campaignId) from organization \(organizationId)")
     }
 }
-
-
-
 
 
 
