@@ -21,10 +21,7 @@
 		40CC2B972A8252E700A7A809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B962A8252E700A7A809 /* AppDelegate.swift */; };
 		B0119F662AE299C400CBC381 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0119F652AE299C400CBC381 /* NotificationService.swift */; };
 		B0119F6A2AE299C400CBC381 /* Service.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B0119F632AE299C400CBC381 /* Service.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B020C95B2AB9E7430098484B /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020C95A2AB9E7430098484B /* SwiftUIView.swift */; };
-		B020C95D2AB9E8090098484B /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020C95C2AB9E8090098484B /* DestinationView.swift */; };
 		B0514A312AD4209700BB8966 /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B0514A302AD4209700BB8966 /* Video.mp4 */; };
-		B05F03D42AD3E6E900319A72 /* Image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B05F03D32AD3E6E900319A72 /* Image2.jpg */; };
 		B06E0EB82AD80E0300264307 /* wigzo.png in Resources */ = {isa = PBXBuildFile; fileRef = B06E0EB72AD80E0300264307 /* wigzo.png */; };
 		B06E0EB92AD80E0300264307 /* wigzo.png in Resources */ = {isa = PBXBuildFile; fileRef = B06E0EB72AD80E0300264307 /* wigzo.png */; };
 		B0839BBB2ADD2B2800FD0A90 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0839BBA2ADD2B2800FD0A90 /* MainInterface.storyboard */; };
@@ -103,10 +100,7 @@
 		B0119F632AE299C400CBC381 /* Service.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Service.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0119F652AE299C400CBC381 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		B0119F672AE299C400CBC381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B020C95A2AB9E7430098484B /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		B020C95C2AB9E8090098484B /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 		B0514A302AD4209700BB8966 /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Video.mp4; sourceTree = "<group>"; };
-		B05F03D32AD3E6E900319A72 /* Image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image2.jpg; sourceTree = "<group>"; };
 		B06E0EB72AD80E0300264307 /* wigzo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wigzo.png; sourceTree = "<group>"; };
 		B0839BBA2ADD2B2800FD0A90 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		B0839BBD2ADD2B4B00FD0A90 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -207,12 +201,9 @@
 				408A67412A827C6600711687 /* demo_inApp.entitlements */,
 				40CC2B962A8252E700A7A809 /* AppDelegate.swift */,
 				B0D6B87D2ADE7F3200086B66 /* Test.json */,
-				B05F03D32AD3E6E900319A72 /* Image2.jpg */,
 				B0514A302AD4209700BB8966 /* Video.mp4 */,
 				40CC2B672A82512C00A7A809 /* ContentView.swift */,
 				40CC2B692A82512D00A7A809 /* Assets.xcassets */,
-				B020C95A2AB9E7430098484B /* SwiftUIView.swift */,
-				B020C95C2AB9E8090098484B /* DestinationView.swift */,
 			);
 			path = demo_inApp;
 			sourceTree = "<group>";
@@ -413,7 +404,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05F03D42AD3E6E900319A72 /* Image2.jpg in Resources */,
 				B0D6B87E2ADE7F3300086B66 /* Test.json in Resources */,
 				B06E0EB82AD80E0300264307 /* wigzo.png in Resources */,
 				40408E8C2A83BA4F0097C4FA /* ios-sdk in Resources */,
@@ -465,9 +455,7 @@
 				40CC2B972A8252E700A7A809 /* AppDelegate.swift in Sources */,
 				40CC2B682A82512C00A7A809 /* ContentView.swift in Sources */,
 				B0839BBE2ADD2B4B00FD0A90 /* NotificationViewController.swift in Sources */,
-				B020C95D2AB9E8090098484B /* DestinationView.swift in Sources */,
 				B0839BC12ADD2B6600FD0A90 /* CarouselCell.swift in Sources */,
-				B020C95B2AB9E7430098484B /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

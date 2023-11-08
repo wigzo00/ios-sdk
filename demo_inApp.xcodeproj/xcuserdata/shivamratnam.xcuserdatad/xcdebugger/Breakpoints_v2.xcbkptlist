@@ -571,13 +571,13 @@
             filePath = "../../code/ios-sdk/Sources/WigzoiOSSDK/templates/HelperClass.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "sendLocalPushNotification(from:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "7355ACC8-FDA4-41C1-A88C-CDFB7DE5D7B3 - bf9e8b70b8f7edc"
+                  uuid = "7355ACC8-FDA4-41C1-A88C-CDFB7DE5D7B3 - bf9e8b70b8f7e71"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -587,12 +587,12 @@
                   urlString = "file:///Users/admin/Documents/shivam/code/ios-sdk/Sources/WigzoiOSSDK/templates/HelperClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "422"
-                  endingLineNumber = "422"
+                  startingLineNumber = "425"
+                  endingLineNumber = "425"
                   offsetFromSymbolStart = "548">
                </Location>
                <Location
-                  uuid = "7355ACC8-FDA4-41C1-A88C-CDFB7DE5D7B3 - bf9e8b70b8f7edc"
+                  uuid = "7355ACC8-FDA4-41C1-A88C-CDFB7DE5D7B3 - bf9e8b70b8f7e71"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -602,8 +602,8 @@
                   urlString = "file:///Users/admin/Documents/shivam/code/ios-sdk/Sources/WigzoiOSSDK/templates/HelperClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "422"
-                  endingLineNumber = "422"
+                  startingLineNumber = "425"
+                  endingLineNumber = "425"
                   offsetFromSymbolStart = "596">
                </Location>
             </Locations>
@@ -864,81 +864,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "84220130-A29C-4DBA-B29A-59A80D242AB3"
+            uuid = "C83DF0D2-113A-41B2-9ADC-B20795736D90"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "demo_inApp/AppDelegate.swift"
+            filePath = "../../code/ios-sdk/Sources/WigzoiOSSDK/TemplatesV2/MyPayload.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C1616476-5175-4672-A7F3-679EB260DE51"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "demo_inApp/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E307626F-4F38-4787-B5B1-C35F0A561EE4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "demo_inApp/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E307626F-4F38-4787-B5B1-C35F0A561EE4 - f58b4dc765354994"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
-                  moduleName = "demo_inApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Documents/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "204"
-                  endingLineNumber = "204"
-                  offsetFromSymbolStart = "5772">
-               </Location>
-               <Location
-                  uuid = "E307626F-4F38-4787-B5B1-C35F0A561EE4 - f58b4dc765354994"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "demo_inApp.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
-                  moduleName = "demo_inApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Documents/shivam/Documents/demo_inApp/demo_inApp/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "204"
-                  endingLineNumber = "204"
-                  offsetFromSymbolStart = "5932">
-               </Location>
-            </Locations>
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "DataClass"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
