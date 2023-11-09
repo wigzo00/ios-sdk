@@ -1,5 +1,5 @@
 //
-//  FCMMapper.swift
+//  FCMRegister.swift
 //  
 //
 //  Created by Rihan on 10/01/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class FCMMapper : Task {
+public class FCMRegister : Task {
     
     private var registrationId : String? = nil
     
@@ -17,8 +17,8 @@ public class FCMMapper : Task {
         self.registrationId = registrationId
     }
     
-    public func setRegistrationId(registrationId : String) -> FCMMapper {
-        self.registrationId = registrationId
+    public func setRegistrationId(registrationId : String) -> FCMRegister {
+        self.registrationId = registrationId;
         return self
     }
     
@@ -26,31 +26,23 @@ public class FCMMapper : Task {
         return self.registrationId
     }
     
-    override func buildUrl() -> String? {
-        return "\(Configuration.BASE_URL.value())\(Configuration.FCM_DEVICE_MAPPING_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
+    override func buildUrl() -> String {
+        return "\(Configuration.BASE_URL.value())\(Configuration.FCM_REGISTRATION_URL.value())?\(Configuration.SITE_ID.value())=\(Wigzo.getOrgToken() ?? "")"
     }
     
     override func dict() -> Dictionary<String, Any>? {
         var data : Dictionary<String, Any> = [:]
-        let deviceInfo = DeviceInfo()
         if StringUtils.isNotEmpty(self.registrationId) {
             data["registrationId"] = self.registrationId
         }
-        do {
-            if try deviceInfo.isValid() {
-                data["deviceInfo"] = deviceInfo.dict()
-            }
-        } catch let error {
-            print(error.self)
-        }
-        
         return data
     }
     
     override internal func validate() throws -> Bool {
         if(StringUtils.isEmpty(self.registrationId)) {
-            throw Validation.FCMMapperError("Firebase registration ID cannot be blank");
+            throw Validation.FCMRegisterError("Firebase registration ID cannot be blank");
         }
         return true;
     }
+    
 }

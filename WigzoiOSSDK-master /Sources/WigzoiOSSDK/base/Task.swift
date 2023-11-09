@@ -32,14 +32,10 @@ public class Task {
     private func takeAction() -> Void {
         if let postUrl = self.buildUrl() {
             let preparedData : Dictionary<String, Any> = prepareData()
-            print("prepareData:",preparedData)
-            
-            print("url",postUrl)
             ConnectionStream().postJson(url: postUrl, data: preparedData, headers: nil) {
                 data, urlResponse, error in
-             // print("received data", data!)
-               // print("received URL RESPONSE", urlResponse!)
-               // print("error",error?.localizedDescription)
+                print("received data", data!)
+                print("received URL RESPONSE", urlResponse!)
             }
         }
     }
@@ -52,7 +48,6 @@ public class Task {
                 WigzoDispatchQueue.execute(executable: takeAction)
             }
         } catch let error {
-            print("error in push",error.localizedDescription)
             throw error
         }
     }

@@ -32,18 +32,9 @@ public class FCMMapper : Task {
     
     override func dict() -> Dictionary<String, Any>? {
         var data : Dictionary<String, Any> = [:]
-        let deviceInfo = DeviceInfo()
         if StringUtils.isNotEmpty(self.registrationId) {
             data["registrationId"] = self.registrationId
         }
-        do {
-            if try deviceInfo.isValid() {
-                data["deviceInfo"] = deviceInfo.dict()
-            }
-        } catch let error {
-            print(error.self)
-        }
-        
         return data
     }
     
