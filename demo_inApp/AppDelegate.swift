@@ -47,6 +47,7 @@ import Foundation
      },
     "id": 1280,
     "title": "Title goes here",
+    "description" : "Lorem Ipsum is simply dummy text of the printing and jkqwdgweh ",
     "notificationId": 0,
     "imageUrl": [
       "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
@@ -63,11 +64,11 @@ import Foundation
       }],
     "notification_details": {
       "buttonOrientation": "horizontal",
-      "templateOrientation": "top",
-      "templateBackground": "#fff",
-      "titleColor": "#000",
-      "titleFontSize": "14px",
-      "descriptionFontSize": "12px",
+      "templateOrientation": "footer",
+      "templateBackground": "#FF6F61",
+      "titleColor": "#ADD8E6",
+      "titleFontSize": "20px",
+      "descriptionFontSize": "16px",
       "descriptionFontColor": "#060101",
       "isclose": "true",
       "imageOrientation": "fullLayout",

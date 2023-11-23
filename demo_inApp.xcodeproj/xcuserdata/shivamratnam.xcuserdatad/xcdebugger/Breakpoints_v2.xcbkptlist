@@ -669,6 +669,21 @@
                   endingLineNumber = "94"
                   offsetFromSymbolStart = "1176">
                </Location>
+               <Location
+                  uuid = "7B20434F-7E9B-4C7F-986E-461EB131C569 - 2cfc66733271565f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.NotificationViewController.didReceive(__C.UNNotification) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/shivam/Documents/demo_inApp/Content/NotificationViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "1088">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -731,6 +746,21 @@
                   startingLineNumber = "110"
                   endingLineNumber = "110"
                   offsetFromSymbolStart = "3100">
+               </Location>
+               <Location
+                  uuid = "3F8DC67D-4879-4558-9BB9-CB8F1B29C3FE - 2cfc66733271686f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.NotificationViewController.didReceive(__C.UNNotification) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/shivam/Documents/demo_inApp/Content/NotificationViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "3012">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -795,6 +825,21 @@
                   endingLineNumber = "92"
                   offsetFromSymbolStart = "876">
                </Location>
+               <Location
+                  uuid = "93350C09-8A2D-481E-A9E2-66D5034B32BC - 2cfc66733271559d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.NotificationViewController.didReceive(__C.UNNotification) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/shivam/Documents/demo_inApp/Content/NotificationViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "788">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -858,23 +903,22 @@
                   endingLineNumber = "98"
                   offsetFromSymbolStart = "1320">
                </Location>
+               <Location
+                  uuid = "AE393597-0A64-4839-B53D-B116ABDE97BD - 2cfc6673327156db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo_inApp.NotificationViewController.didReceive(__C.UNNotification) -&gt; ()"
+                  moduleName = "demo_inApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/shivam/Documents/demo_inApp/Content/NotificationViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "1232">
+               </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C83DF0D2-113A-41B2-9ADC-B20795736D90"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../code/ios-sdk/Sources/WigzoiOSSDK/TemplatesV2/MyPayload.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "DataClass"
-            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
