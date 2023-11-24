@@ -11,7 +11,6 @@
 		401048982A95E3E100B7E305 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 401048972A95E3E100B7E305 /* FirebaseInstallations */; };
 		4010489A2A95E3E100B7E305 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 401048992A95E3E100B7E305 /* FirebaseMessaging */; };
 		40408E8A2A83BA2A0097C4FA /* WigzoiOSSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 40408E892A83BA2A0097C4FA /* WigzoiOSSDK */; };
-		40408E8C2A83BA4F0097C4FA /* ios-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 40408E8B2A83BA4F0097C4FA /* ios-sdk */; };
 		408A67402A826BA400711687 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 408A673F2A826BA400711687 /* GoogleService-Info.plist */; };
 		40CC2B682A82512C00A7A809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC2B672A82512C00A7A809 /* ContentView.swift */; };
 		40CC2B6A2A82512D00A7A809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CC2B692A82512D00A7A809 /* Assets.xcassets */; };
@@ -84,7 +83,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		40408E8B2A83BA4F0097C4FA /* ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-sdk"; path = "../../code/ios-sdk"; sourceTree = "<group>"; };
 		408A673F2A826BA400711687 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		408A67412A827C6600711687 /* demo_inApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = demo_inApp.entitlements; sourceTree = "<group>"; };
 		40CC2B622A82512C00A7A809 /* demo_inApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo_inApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,7 +167,6 @@
 		40CC2B592A82512C00A7A809 = {
 			isa = PBXGroup;
 			children = (
-				40408E8B2A83BA4F0097C4FA /* ios-sdk */,
 				408A673F2A826BA400711687 /* GoogleService-Info.plist */,
 				40CC2B642A82512C00A7A809 /* demo_inApp */,
 				40CC2B752A82512D00A7A809 /* demo_inAppTests */,
@@ -406,7 +403,6 @@
 			files = (
 				B0D6B87E2ADE7F3300086B66 /* Test.json in Resources */,
 				B06E0EB82AD80E0300264307 /* wigzo.png in Resources */,
-				40408E8C2A83BA4F0097C4FA /* ios-sdk in Resources */,
 				40CC2B6A2A82512D00A7A809 /* Assets.xcassets in Resources */,
 				B0839BBB2ADD2B2800FD0A90 /* MainInterface.storyboard in Resources */,
 				408A67402A826BA400711687 /* GoogleService-Info.plist in Resources */,
