@@ -44,6 +44,7 @@ public struct Aps: Codable {
 public struct NotificationData:Codable {
     let mutableContent: Int?
     let title: String?
+   
 }
 
 // MARK: - DataClass
@@ -52,6 +53,7 @@ public struct DataClass: Codable {
     let type: TypeClass?
     let id: Int?
     let title: String?
+    let description: String?
     let notificationID: Int?
     let imageUrl: [String]?
     let secondSound: Int?
@@ -61,6 +63,23 @@ public struct DataClass: Codable {
     let isWigzoNotification: Bool?
     let button: [ButtonClass]?
     let notificationDetails: NotificationDetails?
+    
+    enum CodingKeys : String, CodingKey {
+        case type
+        case id
+        case title
+        case description
+        case notificationID
+        case imageUrl
+        case secondSound
+        case intentData
+        case uuid
+        case organizationID
+        case layoutID
+        case isWigzoNotification
+        case button
+        case notificationDetails = "notification_details"
+    }
 }
 
 // MARK: - NotificationDetails
@@ -75,6 +94,6 @@ public struct TypeClass: Codable {
 }
 
 public struct ButtonClass: Codable {
-    let buttonURL, buttonName, buttonAction, buttonFontColor: String?
+    let buttonUrl, buttonName, buttonAction, buttonFontColor: String?
     let buttonFontSize, buttonColor: String?
 }

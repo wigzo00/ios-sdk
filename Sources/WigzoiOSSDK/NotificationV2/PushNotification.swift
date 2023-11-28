@@ -45,9 +45,9 @@ public class PushNotification{
                 let action1 = UNNotificationAction(identifier: "Action1Identifier", title: "Button 1", options: [])
                 let action2 = UNNotificationAction(identifier: "Action2Identifier", title: "Button 2", options: [])
                 //  let categoryIdentifier = "carousel"
-                 let categoryIdentifier = "image"
+               //  let categoryIdentifier = "image"
                 //let categoryIdentifier = "text"
-                //let categoryIdentifier = "video"
+                let categoryIdentifier = "video"
                 
                 let category = UNNotificationCategory(identifier:categoryIdentifier, actions: [action1, action2], intentIdentifiers: [], options: [])
                 
