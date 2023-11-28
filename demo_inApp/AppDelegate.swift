@@ -38,7 +38,7 @@ import Foundation
 {
   "notification": {
     "mutable-content": 1,
-    "title": "Title goes here"
+    "title": "Title goes here whatever you want to put"
   },
   "data": {
      "type": {
@@ -46,7 +46,7 @@ import Foundation
      "pushType":"inApp"
      },
     "id": 1280,
-    "title": "Title goes here",
+    "title": "Title goes here ",
     "description" : "Lorem Ipsum is simply dummy text of the printing and jkqwdgweh ",
     "notificationId": 0,
     "imageUrl": [
@@ -59,8 +59,16 @@ import Foundation
     "layoutId": "001",
     "isWigzoNotification": true,
     "button": [{
-       "buttonUrl":"","buttonName":"Button","buttonAction":"","buttonFontColor":"","buttonFontSize":"14px","buttonColor":""
+       "buttonUrl":"https://www.openai.com","buttonName":"openUrl","buttonAction":"","buttonFontColor":"#060101","buttonFontSize":"20px","buttonColor":"#FFFF00"
 
+      },
+{
+         "buttonUrl": "https://www.openai.com",
+         "buttonName": "Close",
+         "buttonAction": "",
+         "buttonFontColor": "#FF6F61",
+         "buttonFontSize": "18px",
+         "buttonColor": "#FFFF00"
       }],
     "notification_details": {
       "buttonOrientation": "horizontal",
@@ -69,7 +77,7 @@ import Foundation
       "titleColor": "#ADD8E6",
       "titleFontSize": "20px",
       "descriptionFontSize": "16px",
-      "descriptionFontColor": "#060101",
+      "descriptionFontColor": "#ADD8E6",
       "isclose": "true",
       "imageOrientation": "fullLayout",
       "textAllignment": "center"
