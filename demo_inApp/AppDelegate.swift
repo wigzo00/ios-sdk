@@ -64,7 +64,7 @@ import Foundation
       }],
     "notification_details": {
       "buttonOrientation": "horizontal",
-      "templateOrientation": "footer",
+      "templateOrientation": "top",
       "templateBackground": "#FF6F61",
       "titleColor": "#ADD8E6",
       "titleFontSize": "20px",
@@ -103,17 +103,18 @@ import Foundation
     
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
-        try! Wigzo.initialize(orgToken: "6Srd_EenR5qIIKuQvEZa0g", forceInit: true)
         FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         Messaging.messaging().delegate = self
+        try! Wigzo.initialize(orgToken: "6Srd_EenR5qIIKuQvEZa0g", forceInit: true)
+
 //
-        let pushNotification = PushNotification()
-        pushNotification.sendLocalNotificationWithFile()
+//        let pushNotification = PushNotification()
+//        pushNotification.sendLocalNotificationWithFile()
 //
          // Present the in-app notification view controller
         
-         coverJsonTOModel()
+//         coverJsonTOModel()
          
 
          if #available(iOS 10, *) {
@@ -131,7 +132,7 @@ import Foundation
         application.registerForRemoteNotifications()
          DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
                      // Code to be executed after the delay
-             self.helper.showInAppNotificationViewController(payloadJson: self.notificationJson)
+//             self.helper.showInAppNotificationViewController(payloadJson: self.notificationJson)
                  }
 
         return true
@@ -180,11 +181,38 @@ import Foundation
      
     
      func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options: UNNotificationPresentationOptions) -> Void) {
-        
-        let userInfo = notification.request.content.userInfo as? [String: Any]
-        print("userInfo = " , userInfo)
+         
+         Wigzo.setPushNotifiaction(notification)
+         completionHandler([.banner, .badge, .list, .sound])
+
+         /*if let notiDetail = userInfo["notification_details"] as? [String: Any] {
+             print("notiDetail ==== \(notiDetail)")
+         }
          
          
+         
+         do {
+                          
+             guard let jsonData = try? JSONSerialization.data(withJSONObject: notification.request.content.userInfo, options: []) else { return }
+             let payloadData: WigzoNotification1 = try! JSONDecoder().decode(WigzoNotification1.self, from: jsonData)
+             let helper = HelperClass()
+             helper.showInAppNotificationViewController(payloadJson: payloadData)
+         }catch {
+             print("exception === \(error)")
+         }
+         
+         if let jsonData = try? JSONSerialization.data(withJSONObject: notification.request.content.userInfo, options: []),
+             let payloadData = try? JSONDecoder().decode(WigzoNotification1.self, from: jsonData) {
+
+             // Assuming you have an instance of HelperClass
+             let helper = HelperClass()
+
+             // Call the method on HelperClass, not InAppNotificationViewController
+            // helper.showInAppNotificationViewController(payloadJson: payloadData)
+         }*/
+         
+         
+         /*
         // Check if the notification is a push notification
          if notification.request.content.userInfo["aps"] != nil {
              
@@ -268,9 +296,9 @@ import Foundation
 //                             ),
 //                             registrationIDS: [] // You might need to format this based on the actual data structure
 //                         )
-                         completionHandler([.banner, .badge, .list, .sound])
+            //             completionHandler([.banner, .badge, .list, .sound])
 
-                         
+                    
                          
                          
                      } else if pushTypeValue == "push" {
@@ -303,13 +331,12 @@ import Foundation
          }
                 
         else{
-            let pushNotification = PushNotification()
-            pushNotification.handleNotification(notificationInfo: userInfo!)
+//            let pushNotification = PushNotification()
+//            pushNotification.handleNotification(notificationInfo: userInfo!)
 
-        }
+        }*/
                //  Check if the notification is a local notification
-        completionHandler([.alert, .sound, .badge])
-         
+//         completionHandler([.banner, .badge, .list, .sound])
     }
      
 
