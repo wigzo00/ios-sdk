@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 public class DeviceInfo : Model {
     
     private var device : String? = nil
@@ -41,7 +40,7 @@ public class DeviceInfo : Model {
     }
     public func setAppVersion(appVersion : String) -> Void {
         self.appVersion = appVersion
-    } 
+    }
     public func setLocation(location : Location) -> Void {
         self.location = location
     }

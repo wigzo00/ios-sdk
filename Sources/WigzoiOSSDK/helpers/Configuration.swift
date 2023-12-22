@@ -16,7 +16,7 @@ public enum Configuration {
         case .BASE_URL:
      // return ("baseUrl", "http://10.10.11.242:9000")
             
-            return ("baseUrl", "http://172.16.2.190:9000")
+            return ("baseUrl", "http://app-stage.wigzo.tech")
            // return ("baseUrl", "http://192.168.4.83:9000")
       
        // return ("baseUrl", "https://app.wigzo.com")
