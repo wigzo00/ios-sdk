@@ -1,4 +1,7 @@
+// created by Shivam Ratnam
+
 import Foundation
+import UserNotifications
 public class Wigzo {
     
     public static func getStringFromStorage(forKey: String) -> String? {
@@ -35,7 +38,7 @@ public class Wigzo {
     private static func setOrgToken(_ token: String) -> Void {
         setToStorage(value: token, forKey: Configuration.ORG_TOKEN_KEY.key())
     }
-
+    
     public static func initialize(orgToken: String) throws -> Void {
         guard StringUtils.isNotEmpty(orgToken) else {
             throw Validation.InitializaitionError("Organization Token not provided. Visit Wigzo settings in the Wigzo dashboard to get your organization token")
@@ -56,5 +59,19 @@ public class Wigzo {
     
     public static func setDeviceMappingTask() -> Void {
         try! DeviceMapper().push()
+    }
+    public static func setPushNotifiaction(_ userInfo: UNNotification) -> Void {
+        guard let userInfo = userInfo.request.content.userInfo as? [String: Any] else { return }
+        showPushNotification(userInfo)
+    }
+    
+    private static func showPushNotification(_ userInfo: [String: Any]) {
+        if #available(iOS 13.0, *) {
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: []) else { return }
+            let payloadData: WigzoNotification1 = try! JSONDecoder().decode(WigzoNotification1.self, from: jsonData)
+            let helper = HelperClass()
+            helper.showInAppNotificationViewController(payloadJson: payloadData)
+        }
+        
     }
 }

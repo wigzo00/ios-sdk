@@ -43,29 +43,62 @@ internal class ConnectionStream {
     }
     
     private func execute(url: String, data : Dictionary<String, Any>?, httpMethod : HTTPMethod, headers : Dictionary<String, String>?, responseHandler : @escaping (String?, HTTPURLResponse?, (any Error)?) -> Void) -> Void {
-        let someUrl = URL(string: url)
-        if someUrl != nil {
-            var request = URLRequest(url : someUrl!)
-            if data != nil {
-                do {
-                    request.httpBody = try JSONSerialization.data(withJSONObject: data!)
-                } catch let error {
-                    print(error.localizedDescription)
+        if let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+            let someUrl = URL(string: urlString)
+            if someUrl != nil {
+                var request = URLRequest(url : someUrl!)
+                if data != nil {
+                    do {
+                        request.httpBody = try JSONSerialization.data(withJSONObject: data!)
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
                 }
-            }
-            
-            request.httpMethod = httpMethod.rawValue
-            if headers != nil {
-                for header in headers! {
-                    request.addValue(header.value, forHTTPHeaderField: header.key)
+                
+                request.httpMethod = httpMethod.rawValue
+                if headers != nil {
+                    for header in headers! {
+                        request.addValue(header.value, forHTTPHeaderField: header.key)
+                    }
                 }
+                URLSession.shared.dataTask(with: request){
+                    data, urlResponse, error in
+                    responseHandler(data != nil ? String(decoding: data!, as: UTF8.self) : nil, urlResponse as? HTTPURLResponse, error)
+                }.resume()
+                
+                RunLoop.current.run()
             }
-            URLSession.shared.dataTask(with: request){
-                data, urlResponse, error in
-                responseHandler(data != nil ? String(decoding: data!, as: UTF8.self) : nil, urlResponse as? HTTPURLResponse, error)
-            }.resume()
-
-            RunLoop.current.run()
         }
     }
+//    private func execute(url: String, data: Dictionary<String, Any>?, httpMethod: HTTPMethod, headers: Dictionary<String, String>?, responseHandler: @escaping (String?, HTTPURLResponse?, Error?) -> Void) {
+//        if let encodedURLString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+//            let someUrl = URL(string: encodedURLString) {
+//
+//            var request = URLRequest(url: someUrl)
+//
+//            if let data = data {
+//                do {
+//                    request.httpBody = try JSONSerialization.data(withJSONObject: data)
+//                } catch let error {
+//                    print("Serialization Error: \(error.localizedDescription)")
+//                }
+//            }
+//
+//            request.httpMethod = httpMethod.rawValue
+//
+//            if let headers = headers {
+//                for header in headers {
+//                    request.addValue(header.value, forHTTPHeaderField: header.key)
+//                }
+//            }
+//
+//            URLSession.shared.dataTask(with: request) { data, urlResponse, error in
+//                responseHandler(data != nil ? String(decoding: data!, as: UTF8.self) : nil, urlResponse as? HTTPURLResponse, error)
+//            }.resume()
+//
+//        } else {
+//            print("Invalid URL: \(url)")
+//        }
+//    }
+
 }
