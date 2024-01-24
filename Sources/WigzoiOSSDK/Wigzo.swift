@@ -52,8 +52,6 @@ public class Wigzo {
             throw Validation.InitializaitionError("Organization Token not provided. Visit Wigzo settings in the Wigzo dashboard to get your organization token")
         }
         setOrgToken(orgToken)
-        setToStorage(value: UUID().uuidString, forKey: Configuration.DEVICE_ID_KEY.value())
-        setToStorage(value: UUID().uuidString, forKey: Configuration.APP_KEY.value())
         setDeviceMappingTask()
     }
     
@@ -62,16 +60,57 @@ public class Wigzo {
     }
     public static func setPushNotifiaction(_ userInfo: UNNotification) -> Void {
         guard let userInfo = userInfo.request.content.userInfo as? [String: Any] else { return }
+        
         showPushNotification(userInfo)
     }
     
-    private static func showPushNotification(_ userInfo: [String: Any]) {
-        if #available(iOS 13.0, *) {
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: []) else { return }
-            let payloadData: WigzoNotification1 = try! JSONDecoder().decode(WigzoNotification1.self, from: jsonData)
-            let helper = HelperClass()
-            helper.showInAppNotificationViewController(payloadJson: payloadData)
+//    private static func showPushNotification(_ userInfo: [String: Any]) {
+//        if #available(iOS 13.0, *) {
+//            guard let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: []) else { return }
+//            let payloadData: WigzoNotification1 = try! JSONDecoder().decode(WigzoNotification1.self, from: jsonData)
+//            let helper = HelperClass()
+//            helper.showInAppNotificationViewController(payloadJson: payloadData)
+//        }
+//        
+//    }
+    // Modify the showPushNotification method in your Wigzo class
+    private static func convertStringToDictionary(text: String) -> [String: Any]? {
+            if let data = text.data(using: .utf8) {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+                    return json
+                } catch {
+                    print("Something went wrong while converting string to dictionary: \(error)")
+                }
+            }
+            return nil
         }
-        
+
+    private static func showPushNotification(_ userInfo: [String: Any]) {
+        guard let typeDictString = userInfo["type"] as? String,
+              let pushType = convertStringToDictionary(text: typeDictString),
+              let pushTypeValue = pushType["pushType"] as? String else {
+            // Handle the case where pushType is not present or not a string
+            return
+        }
+
+        if pushTypeValue == "inApp" {
+            // Handle in-app notification
+            if #available(iOS 13.0, *) {
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: []) else { return }
+                let payloadData: WigzoNotification1 = try! JSONDecoder().decode(WigzoNotification1.self, from: jsonData)
+                let helper = HelperClass()
+                helper.showInAppNotificationViewController(payloadJson: payloadData)
+            }
+        } else if pushTypeValue == "push" {
+            // Handle push notification
+            // You can add your push notification handling logic here
+            // For example, you can display a banner or customize the notification UI
+        } else {
+            // Handle other cases if needed
+            // You might want to log or ignore notifications with unknown pushType values
+        }
     }
+    
+
 }

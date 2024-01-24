@@ -504,16 +504,21 @@ extension HelperClass {
             ])
                
         }
-        else if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "middle"{
+        else if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "center"{
             NSLayoutConstraint.activate([
                 inAppNotificationViewController.view.centerXAnchor.constraint(equalTo: topViewController.view.centerXAnchor),
                        inAppNotificationViewController.view.centerYAnchor.constraint(equalTo: topViewController.view.centerYAnchor),
-                       inAppNotificationViewController.view.widthAnchor.constraint(equalTo: topViewController.view.widthAnchor, multiplier: 0.8), // Adjust multiplier as needed
-                       inAppNotificationViewController.view.heightAnchor.constraint(equalTo: topViewController.view.heightAnchor, multiplier: 0.6), // Adjust multiplier as needed
+                inAppNotificationViewController.view.widthAnchor.constraint(equalTo: topViewController.view.widthAnchor, multiplier: 0.8),
                 
             ])
+            
+            if inAppNotificationViewController.payload?.imageURL?.count ?? 0 > 0 {
+                NSLayoutConstraint.activate([
+                    inAppNotificationViewController.view.heightAnchor.constraint(equalTo: topViewController.view.heightAnchor, multiplier: 0.6)
+                ])
+            }
         }
-        else if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "footer"  {
+        else if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "bottom"  {
             NSLayoutConstraint.activate([
                 inAppNotificationViewController.view.leadingAnchor.constraint(equalTo: topViewController.view.leadingAnchor, constant: 6),
                 inAppNotificationViewController.view.trailingAnchor.constraint(equalTo: topViewController.view.trailingAnchor, constant: -6),

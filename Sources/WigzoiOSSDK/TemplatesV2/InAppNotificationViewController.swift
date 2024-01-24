@@ -53,6 +53,7 @@ public class InAppNotificationViewController: UIViewController {
         let notificationTitle = payload?.title
              
         let buttonArray = payload?.button
+        let Notificationtype = payload?.type
              
              
         let imageURLs = payload?.imageURL
@@ -87,6 +88,7 @@ public class InAppNotificationViewController: UIViewController {
         view.backgroundColor = templateColor
 
         setupTemplate(templateOrientation: templateOrientation, title: notificationTitle, description: description, titleColor: titleColorString, descriptionFontColor: descriptionFontColorString, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
+        
     }
     
     // MARK: - Layout
@@ -105,6 +107,7 @@ public class InAppNotificationViewController: UIViewController {
         guard let payload = payload else { return }
              
             let notificationTitle = payload.title
+        let notificationType = payload.type
             let description = payload.description
             let buttonArray = payload.button
             let imageURLs = payload.imageURL
@@ -144,10 +147,10 @@ public class InAppNotificationViewController: UIViewController {
         case "top":
             setupTopTemplate(title: title, description: description, titleColor: titleColor, descriptionFontColor: descriptionFontColor, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
 
-        case "middle":
+        case "center":
             setupMiddleTemplate(title: title, description: description, titleColor: titleColor, descriptionFontColor: descriptionFontColor, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
             
-        case "footer":
+        case "bottom":
             setupFooterTemplate(title: title, description: description, titleColor: titleColor, descriptionFontColor: descriptionFontColor, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
             
         case "fullScreen":
@@ -222,61 +225,91 @@ public class InAppNotificationViewController: UIViewController {
 
     func setupMiddleTemplate(title: String?, description: String?, titleColor: String?, descriptionFontColor: String?, sizeForTitle: Int?, sizeForDescription: Int?, imageURLs: [String]?, buttonArray: [WigzoButton]?) {
         // Setup UI elements for "middle" template orientation
-        let mainStackView = setupMainStackView(templateOrientation: "middle")
+        let mainStackView = setupMainStackView(templateOrientation: "center")
+        
         let buttonStackView = setupButtonStackView(buttonArray: buttonArray)
         let dismissButton = setupDismissButton()
-        let imageView = setupImageView(templateOrientation: "middle", imageURLs: imageURLs)
+        dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+
+        let imageView = setupImageView(templateOrientation: "center", imageURLs: imageURLs)
         let labelStackView = setupLabelStackView()
         
-        let labelView = UIView()
-        labelView.translatesAutoresizingMaskIntoConstraints = false
-        labelView.addSubview(labelStackView)
-        mainStackView.addArrangedSubview(labelView)
-        
-        dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-        labelStackView.addArrangedSubview(createTitle(title: title ?? "Hello Dude"))
-        labelStackView.addArrangedSubview(createDescription(description: description ?? ""))
-
-        mainStackView.addArrangedSubview(imageView)
-        mainStackView.addArrangedSubview(labelView)
-        
-        view.addSubview(buttonStackView)
-        view.addSubview(dismissButton)
+        if payload?.type?.type?.lowercased() == "Image Only".lowercased(){
+           view.addSubview(imageView)
+            view.addSubview(dismissButton)
 
 
-        // Add constraints for 'middle' orientation
+            NSLayoutConstraint.activate([
+                // Main stack view constraints
+                imageView.topAnchor.constraint(equalTo: view.topAnchor ),
+                imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                imageView.trailingAnchor.constraint(equalTo:view.trailingAnchor ),
+                imageView.bottomAnchor.constraint(equalTo:view.bottomAnchor ),
+                ])
+        }
+        else {
+            
+            
+            let labelView = UIView()
+            labelView.translatesAutoresizingMaskIntoConstraints = false
+            labelView.addSubview(labelStackView)
+            //        mainStackView.addArrangedSubview(labelView)
+            
+            labelStackView.addArrangedSubview(createTitle(title: title ?? ""))
+            labelStackView.addArrangedSubview(createDescription(description: description ?? ""))
+            
+            
+            
+            if let imageURLs = imageURLs, !imageURLs.isEmpty {
+                mainStackView.addArrangedSubview(imageView)
+            }
+            mainStackView.addArrangedSubview(labelView)
+            
+            view.addSubview(mainStackView)
+            if let buttonArray = buttonArray, !buttonArray.isEmpty {
+                view.addSubview(buttonStackView)
+            }
+            view.addSubview(dismissButton)
+            
+            NSLayoutConstraint.activate([
+                // Main stack view constraints
+                labelStackView.topAnchor.constraint(equalTo: labelView.topAnchor, constant: 20),
+                labelStackView.leadingAnchor.constraint(equalTo: labelView.leadingAnchor, constant: 10),
+                labelStackView.trailingAnchor.constraint(equalTo: labelView.trailingAnchor, constant: -10),
+                labelStackView.bottomAnchor.constraint(equalTo: labelView.bottomAnchor, constant: 20),
+                
+                mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
+                mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                
+                
+            ])
+            
+            if let buttonArray = buttonArray, !buttonArray.isEmpty {
+                NSLayoutConstraint.activate([
+                    buttonStackView.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 40),
+                    buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                    buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                    buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+                ])
+            }
+        }
+         
         NSLayoutConstraint.activate([
-            // Main stack view constraints
-                                labelStackView.topAnchor.constraint(equalTo: labelView.topAnchor, constant: 20),
-                                labelStackView.leadingAnchor.constraint(equalTo: labelView.leadingAnchor, constant: 10),
-                                labelStackView.trailingAnchor.constraint(equalTo: labelView.trailingAnchor, constant: -10),
-                                labelStackView.bottomAnchor.constraint(equalTo: labelView.bottomAnchor, constant: 20),
-            
-                                mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-                                mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-                                mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            
-                               /* buttonStackView.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 40),*/ // Align buttonStackView below labelStackView
-                                buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                                buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-                                buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20), // Align buttonStackView at the bottom of the view
-                                dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-                                dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            
-                                imageView.heightAnchor.constraint(equalToConstant: 232),
-                                imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-                                imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-                                imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            
-                                view.bottomAnchor.constraint(greaterThanOrEqualTo: buttonStackView.bottomAnchor, constant: 20)
-                            ])
-                            
+            dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            dismissButton.widthAnchor.constraint(equalToConstant: 30),
+            dismissButton.heightAnchor.constraint(equalToConstant: 30),
+        ])
     }
     func setupFooterTemplate(title: String?, description: String?, titleColor: String?, descriptionFontColor: String?, sizeForTitle: Int?, sizeForDescription: Int?, imageURLs: [String]?, buttonArray: [WigzoButton]?) {
-        let mainStackView = setupMainStackView(templateOrientation: "footer")
+        let mainStackView = setupMainStackView(templateOrientation: "bottom")
         let buttonStackView = setupButtonStackView(buttonArray: buttonArray)
-        let imageView = setupImageView(templateOrientation: "footer", imageURLs: imageURLs)
+        let imageView = setupImageView(templateOrientation: "bottom", imageURLs: imageURLs)
         let dismissButton = setupDismissButton()
         let labelStackView = setupLabelStackView()
         dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
@@ -318,8 +351,8 @@ public class InAppNotificationViewController: UIViewController {
         let labelStackView = setupLabelStackView()
         labelStackView.spacing = 10
         dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-        labelStackView.addArrangedSubview(createTitle(title: title ?? "Hello Dude"))
-        labelStackView.addArrangedSubview(createDescription(description: description ?? "What are you doing!"))
+        labelStackView.addArrangedSubview(createTitle(title: title ?? ""))
+        labelStackView.addArrangedSubview(createDescription(description: description ?? ""))
 //        mainStackView.addArrangedSubview(imageView)
 //        mainStackView.addArrangedSubview(labelStackView)
         
@@ -360,10 +393,10 @@ public class InAppNotificationViewController: UIViewController {
             case "top":
                 mainStackView.axis = .horizontal
                 mainStackView.distribution = .fillProportionally
-            case "middle":
+            case "center":
                 mainStackView.axis = .vertical
                 mainStackView.distribution = .fill
-            case "footer":
+            case "bottom":
                 mainStackView.axis = .horizontal
                 mainStackView.distribution = .fillProportionally  // You can adjust this distribution as needed
             case "fullScreen":
@@ -381,15 +414,17 @@ public class InAppNotificationViewController: UIViewController {
     func setupButtonStackView(buttonArray:[WigzoButton]?) -> UIStackView {
         // Setup button stack view
         let buttonStackView = UIStackView()
+        view.addSubview(buttonStackView)
+
+        guard let buttonArray = buttonArray else { return buttonStackView }
+        
         buttonStackView.axis = payload?.notificationDetails?.buttonOrientation?.lowercased() == "horizontal".lowercased() ? .horizontal : .vertical
         buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 10
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(buttonStackView)
-
-        guard let buttonArray = buttonArray else { return buttonStackView }
         // Add multiple buttons to the stack view
-        for (buttonIndex, buttonObj) in buttonArray.enumerated() {
+        
+        for case let (buttonIndex, buttonObj) in buttonArray.enumerated() where !(buttonObj.buttonName?.isEmpty ?? false) {
             let button = UIButton(type: .system)
             button.setTitle(buttonObj.buttonName, for: .normal)
            // button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -432,7 +467,7 @@ public class InAppNotificationViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.text = title
         //titleLabel.textColor = UIColor(hex: titleColor ?? "#fff")
-        let titleColorString = payload?.notificationDetails?.titleColor ?? "#fff"
+        let titleColorString = payload?.notificationDetails?.titleColor ?? ""
         titleLabel.textColor = UIColor(hex: titleColorString)
 
         titleLabel.numberOfLines = 0
@@ -489,7 +524,7 @@ public class InAppNotificationViewController: UIViewController {
             }
         //descriptionLabel.textColor = UIColor(hex: descriptionFontColor ?? "#fff")
         //descriptionLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForDescription ?? 14))
-        let descriptionFontColorString = payload?.notificationDetails?.descriptionFontColor ?? "#fff"
+        let descriptionFontColorString = payload?.notificationDetails?.descriptionFontColor ?? ""
             descriptionLabel.textColor = UIColor(hex: descriptionFontColorString)
         let sizeForDescription = WigzoUtil.extractFontSize(from: payload?.notificationDetails?.descriptionFontSize ?? "") ?? 14
            descriptionLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForDescription))
@@ -534,17 +569,30 @@ public class InAppNotificationViewController: UIViewController {
     }
     func setupImageView(templateOrientation: String, imageURLs: [String]?) -> UIImageView {
         let imageView = UIImageView()
+        if let notificationType = payload?.type?.type, notificationType.lowercased() == "Text Only" {
+                    // Type is "Text Only", hide image and button
+                    imageView.isHidden = true
+                   
+                } else {
+                    // Type is not "Text Only", show image and button
+                    imageView.isHidden = false
+                }
         guard let imageArray = imageURLs, imageArray.count > 0 else {
             return imageView
         }
+        
+//        guard let imageArray = imageURLs, !imageArray.isEmpty else {
+//                imageView.isHidden = true // Hide the image view if imageURLs is empty
+//                return imageView
+//            }
         
         if let imageURLString = imageArray.first, !imageURLString.isEmpty {
             switch templateOrientation {
             case "top":
                 imageView.contentMode = .scaleAspectFit
-            case "middle":
+            case "center":
                 imageView.contentMode = .scaleAspectFill
-            case "footer":
+            case "bottom":
                 imageView.contentMode = .scaleAspectFit 
             case "fullScreen":
                 imageView.contentMode = .scaleAspectFill // You can adjust this mode as needed

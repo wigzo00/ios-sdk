@@ -181,12 +181,17 @@ public struct WigzoNotification1: Codable {
             button = nil
         }
         
-        if let typeString = try values.decodeIfPresent(String.self, forKey: .button),
+        if let typeString = try values.decodeIfPresent(String.self, forKey: .type),
            let typeData = typeString.data(using: .utf8),
            let typeObj = try? JSONDecoder().decode(TypeClass.self, from: typeData) {
             type = typeObj
         } else {
             type = nil
+        }
+        
+        if let type = type, type.type?.lowercased() == "text only" {
+            imageURL = nil
+          
         }
         
         notificationID = try values.decodeIfPresent(String.self, forKey: .notificationID)
