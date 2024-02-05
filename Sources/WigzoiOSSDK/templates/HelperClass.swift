@@ -465,18 +465,30 @@ public class HelperClass{
     
 }
 @available(iOS 13.0, *)
+class InAppNotificationManager {
+    static var currentInAppNotificationViewController: InAppNotificationViewController?
 
-// version V2
+    static func hideCurrentInAppNotificationViewController() {
+        // Unwrap the optional currentInAppNotificationViewController and remove it
+        if let inAppNotificationViewController = currentInAppNotificationViewController {
+            inAppNotificationViewController.willMove(toParent: nil)
+            inAppNotificationViewController.view.removeFromSuperview()
+            inAppNotificationViewController.removeFromParent()
+            currentInAppNotificationViewController = nil
+        }
+    }
+}
+
+@available(iOS 13.0, *)
 extension HelperClass {
     public func showInAppNotificationViewController(payloadJson: WigzoNotification1?) {
         guard let topViewController = findTopViewController() else {
             return
         }
 
-        
-        print("image obj : ===== \(payloadJson?.imageURL)")
-        print("noti obj : ===== \(payloadJson?.notificationDetails)")
-        
+        // Remove the previous InAppNotificationViewController
+        InAppNotificationManager.hideCurrentInAppNotificationViewController()
+
         let inAppNotificationViewController = InAppNotificationViewController()
 
         // Pass data to InAppNotificationViewController
@@ -486,75 +498,55 @@ extension HelperClass {
         topViewController.addChild(inAppNotificationViewController)
         inAppNotificationViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
-        // Set the background color for InAppNotificationViewController
-
         // Add InAppNotificationViewController's view to the parent view
         topViewController.view.addSubview(inAppNotificationViewController.view)
 
         // Define constraints to center it and set a desired size
-        if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "top"{
-            
-            
-            
+        if payloadJson?.notificationDetails?.templateOrientation?.lowercased() == "top" {
             NSLayoutConstraint.activate([
                 inAppNotificationViewController.view.leadingAnchor.constraint(equalTo: topViewController.view.leadingAnchor, constant: 10),
                 inAppNotificationViewController.view.trailingAnchor.constraint(equalTo: topViewController.view.trailingAnchor, constant: -10),
                 inAppNotificationViewController.view.topAnchor.constraint(equalTo: topViewController.view.topAnchor, constant: 50),
-              
             ])
-               
-        }
-        else if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "center"{
+        } else if payloadJson?.notificationDetails?.templateOrientation?.lowercased() == "center" {
             NSLayoutConstraint.activate([
                 inAppNotificationViewController.view.centerXAnchor.constraint(equalTo: topViewController.view.centerXAnchor),
-                       inAppNotificationViewController.view.centerYAnchor.constraint(equalTo: topViewController.view.centerYAnchor),
+                inAppNotificationViewController.view.centerYAnchor.constraint(equalTo: topViewController.view.centerYAnchor),
                 inAppNotificationViewController.view.widthAnchor.constraint(equalTo: topViewController.view.widthAnchor, multiplier: 0.8),
-                
             ])
-            
-            if inAppNotificationViewController.payload?.imageURL?.count ?? 0 > 0 {
+
+            if payloadJson?.imageURL?.count ?? 0 > 0 {
                 NSLayoutConstraint.activate([
-                    inAppNotificationViewController.view.heightAnchor.constraint(equalTo: topViewController.view.heightAnchor, multiplier: 0.6)
+                    inAppNotificationViewController.view.heightAnchor.constraint(equalTo: topViewController.view.heightAnchor, multiplier: 0.5)
                 ])
             }
-        }
-        else if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "bottom"  {
+        } else if payloadJson?.notificationDetails?.templateOrientation?.lowercased() == "bottom" {
             NSLayoutConstraint.activate([
                 inAppNotificationViewController.view.leadingAnchor.constraint(equalTo: topViewController.view.leadingAnchor, constant: 6),
                 inAppNotificationViewController.view.trailingAnchor.constraint(equalTo: topViewController.view.trailingAnchor, constant: -6),
                 inAppNotificationViewController.view.bottomAnchor.constraint(equalTo: topViewController.view.bottomAnchor, constant: -80),
-
             ])
-            
-        }
-        else if inAppNotificationViewController.payload?.notificationDetails?.templateOrientation?.lowercased() == "fullscreen"  {
-            inAppNotificationViewController.view.translatesAutoresizingMaskIntoConstraints = false
-            topViewController.view.addSubview(inAppNotificationViewController.view)
-
+        } else if payloadJson?.notificationDetails?.templateOrientation?.lowercased() == "fullscreen" {
             NSLayoutConstraint.activate([
                 inAppNotificationViewController.view.topAnchor.constraint(equalTo: topViewController.view.topAnchor),
                 inAppNotificationViewController.view.leadingAnchor.constraint(equalTo: topViewController.view.leadingAnchor),
                 inAppNotificationViewController.view.trailingAnchor.constraint(equalTo: topViewController.view.trailingAnchor),
                 inAppNotificationViewController.view.bottomAnchor.constraint(equalTo: topViewController.view.bottomAnchor)
             ])
-            
         }
-        
+
+        // Set other properties and styles if needed
         inAppNotificationViewController.view.layer.cornerRadius = 10.0 // Adjust the radius to control corner roundness
         inAppNotificationViewController.view.layer.masksToBounds = true   // Notify the child view controller that it has been added
         inAppNotificationViewController.didMove(toParent: topViewController)
+
+        // Save a reference to the current InAppNotificationViewController
+        InAppNotificationManager.currentInAppNotificationViewController = inAppNotificationViewController
+    }
+
+    public func hideInAppNotificationViewController() {
+        // Use the manager to hide the current InAppNotificationViewController
+        InAppNotificationManager.hideCurrentInAppNotificationViewController()
     }
 }
 
-@available(iOS 13.0, *)
-extension HelperClass {
-    public func hideInAppNotificationViewController() {
-        // Assuming you have a reference to InAppNotificationViewController
-        var inAppNotificationViewController: InAppNotificationViewController? = nil
-        
-        inAppNotificationViewController?.willMove(toParent: nil)
-        inAppNotificationViewController?.view.removeFromSuperview()
-        inAppNotificationViewController?.removeFromParent()
-    }
-    
-}

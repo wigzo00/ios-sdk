@@ -7,32 +7,28 @@
 
 import UIKit
 
-    class WigzoUtil {
-        static func convertHexColorToUI(color name: String) -> UIColor? {
-            guard !name.isEmpty else { return nil }
-            return UIColor(hex: name)
-        }
-        static func extractFontSize(from input: String) -> Int? {
-                let numericString = input.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                return Int(numericString)
-            }
-
+class WigzoUtil {
+    static func convertHexColorToUI(color name: String) -> UIColor? {
+        guard !name.isEmpty else { return nil }
+        return UIColor(hex: name)
+    }
+    static func extractFontSize(from input: String) -> Int? {
+        let numericString = input.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        return Int(numericString)
+    }
+    
 }
 
 
 public class InAppNotificationViewController: UIViewController {
     
     public var payload: WigzoNotification1?
-    
-    
-    // var payload: NotificationDataModel?
+
     var sizeForTitle: Int?
     var sizeForDescription: Int?
     var titleColor: String?
     var descriptionFontColor: String?
-    
-    
-    
+  
     // MARK: - Initialization
     
     init() {
@@ -48,45 +44,39 @@ public class InAppNotificationViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         applyPayload()
         let notificationTitle = payload?.title
-             
+        
         let buttonArray = payload?.button
         let Notificationtype = payload?.type
-             
-             
+        
         let imageURLs = payload?.imageURL
-            
+        
         let templateOrientation = payload?.notificationDetails?.templateOrientation
-             
+        
         let description = payload?.description
         let templateBackground = payload?.notificationDetails?.templateBackground ?? ""
-            
+        
         let titleColorString = payload?.notificationDetails?.titleColor ?? ""
-             
+        
         let descriptionFontColorString = payload?.notificationDetails?.descriptionFontColor ?? ""
-             
+        
         let titleFontSizeString = payload?.notificationDetails?.titleFontSize ?? ""
-             
+        
         let descriptionFontSizeString = payload?.notificationDetails?.descriptionFontSize ?? ""
-//        else {
-//                  // Handle the case when payload or its properties are nil
-//                  return
-//              }
-
         // Convert hex colors to UIColor
         let templateColor = WigzoUtil.convertHexColorToUI(color: templateBackground)
         let titleColor = UIColor(hex: titleColorString)
         let descriptionFontColor = UIColor(hex: descriptionFontColorString)
-
+        
         // Extract font sizes
         let sizeForTitle = WigzoUtil.extractFontSize(from: titleFontSizeString) ?? 14
         let sizeForDescription = WigzoUtil.extractFontSize(from: descriptionFontSizeString) ?? 12
-
+        
         // Set view background color
         view.backgroundColor = templateColor
-
+        
         setupTemplate(templateOrientation: templateOrientation, title: notificationTitle, description: description, titleColor: titleColorString, descriptionFontColor: descriptionFontColorString, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
         
     }
@@ -105,48 +95,44 @@ public class InAppNotificationViewController: UIViewController {
     func applyPayload() {
         // Unwrap optional properties from payload
         guard let payload = payload else { return }
-             
-            let notificationTitle = payload.title
+        
+        let notificationTitle = payload.title
         let notificationType = payload.type
-            let description = payload.description
-            let buttonArray = payload.button
-            let imageURLs = payload.imageURL
-            
-            let templateOrientation = payload.notificationDetails?.templateOrientation
-            let templateBackground = payload.notificationDetails?.templateBackground ?? ""
-            let titleColorString = payload.notificationDetails?.titleColor ?? ""
-             
-            let descriptionFontColorString = payload.notificationDetails?.descriptionFontColor ?? ""
-            let titleFontSizeString = payload.notificationDetails?.titleFontSize ?? ""
-             
-             let descriptionFontSizeString = payload.notificationDetails?.descriptionFontSize ?? ""
-//        else {
-//                  // Handle the case when payload or its properties are nil
-//                  return
-//              }
-
+        let description = payload.description
+        let buttonArray = payload.button
+        let imageURLs = payload.imageURL
+        
+        let templateOrientation = payload.notificationDetails?.templateOrientation
+        let templateBackground = payload.notificationDetails?.templateBackground ?? ""
+        let titleColorString = payload.notificationDetails?.titleColor ?? ""
+        
+        let descriptionFontColorString = payload.notificationDetails?.descriptionFontColor ?? ""
+        let titleFontSizeString = payload.notificationDetails?.titleFontSize ?? ""
+        
+        let descriptionFontSizeString = payload.notificationDetails?.descriptionFontSize ?? ""
+        
         // Convert hex colors to UIColor
         let templateColor = WigzoUtil.convertHexColorToUI(color: templateBackground)
         let titleColor = UIColor(hex: titleColorString)
         let descriptionFontColor = UIColor(hex: descriptionFontColorString)
-
+        
         // Extract font sizes
         let sizeForTitle = WigzoUtil.extractFontSize(from: titleFontSizeString) ?? 14
         let sizeForDescription = WigzoUtil.extractFontSize(from: descriptionFontSizeString) ?? 12
-
+        
         // Set view background color
         view.backgroundColor = templateColor
-
+        
         
     }
-
+    
     func setupTemplate(templateOrientation: String?, title: String?, description: String?, titleColor: String?, descriptionFontColor: String?, sizeForTitle: Int?, sizeForDescription: Int?, imageURLs: [String]?, buttonArray: [WigzoButton]?) {
         guard let templateOrientation = templateOrientation else { return }
-
+        
         switch templateOrientation {
         case "top":
             setupTopTemplate(title: title, description: description, titleColor: titleColor, descriptionFontColor: descriptionFontColor, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
-
+            
         case "center":
             setupMiddleTemplate(title: title, description: description, titleColor: titleColor, descriptionFontColor: descriptionFontColor, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
             
@@ -155,13 +141,13 @@ public class InAppNotificationViewController: UIViewController {
             
         case "fullScreen":
             setupFullScreen(title: title, description: description, titleColor: titleColor, descriptionFontColor: descriptionFontColor, sizeForTitle: sizeForTitle, sizeForDescription: sizeForDescription, imageURLs: imageURLs, buttonArray: buttonArray)
-
-
+            
+            
         default:
             break
         }
     }
-
+    
     func setupTopTemplate(title: String?, description: String?, titleColor: String?, descriptionFontColor: String?, sizeForTitle: Int?, sizeForDescription: Int?, imageURLs: [String]?, buttonArray: [WigzoButton]?) {
         let mainStackView = setupMainStackView(templateOrientation: "top")
         let buttonStackView = setupButtonStackView(buttonArray: buttonArray )
@@ -184,7 +170,7 @@ public class InAppNotificationViewController: UIViewController {
         // Add constraints for 'top' orientation
         NSLayoutConstraint.activate([
             // Main stack view constraints
-            mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 5),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             mainStackView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -10),
@@ -193,13 +179,11 @@ public class InAppNotificationViewController: UIViewController {
             buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
-            // buttonStackView.heightAnchor.constraint(equalToConstant: 30),
             
             imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
-
             
             dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             mainStackView.bottomAnchor.constraint(greaterThanOrEqualTo: labelStackView.bottomAnchor, constant: 10),
             labelStackView.topAnchor.constraint(equalTo: mainStackView.topAnchor),
             labelStackView.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
@@ -207,22 +191,22 @@ public class InAppNotificationViewController: UIViewController {
             labelStackViewLeadingConstraint
         ])
         
-        let subview2Width = imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3)
+        let subview2Width = imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
         NSLayoutConstraint.activate([subview2Width])
         if let imageURLs = imageURLs, !imageURLs.isEmpty {
-                // If imageURLs is available, set the top constraint to 10
-                mainStackViewTopConstraint.constant = 0
-                labelStackViewLeadingConstraint.constant = 10
-                labelStackViewLeadingConstraint.priority = .defaultLow
-            } else {
-                // If imageURLs is not available, set the top constraint to 0
-                mainStackViewTopConstraint.constant = 0
-                labelStackViewLeadingConstraint.constant = 25
-                labelStackViewLeadingConstraint.priority = .required
-            }
+            // If imageURLs is available, set the top constraint to 10
+            mainStackViewTopConstraint.constant = 0
+            labelStackViewLeadingConstraint.constant = 10
+            labelStackViewLeadingConstraint.priority = .defaultLow
+        } else {
+            // If imageURLs is not available, set the top constraint to 0
+            mainStackViewTopConstraint.constant = 0
+            labelStackViewLeadingConstraint.constant = 0
+            labelStackViewLeadingConstraint.priority = .required
+        }
         
     }
-
+    
     func setupMiddleTemplate(title: String?, description: String?, titleColor: String?, descriptionFontColor: String?, sizeForTitle: Int?, sizeForDescription: Int?, imageURLs: [String]?, buttonArray: [WigzoButton]?) {
         // Setup UI elements for "middle" template orientation
         let mainStackView = setupMainStackView(templateOrientation: "center")
@@ -230,30 +214,39 @@ public class InAppNotificationViewController: UIViewController {
         let buttonStackView = setupButtonStackView(buttonArray: buttonArray)
         let dismissButton = setupDismissButton()
         dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-
+        
         let imageView = setupImageView(templateOrientation: "center", imageURLs: imageURLs)
-        let labelStackView = setupLabelStackView()
         
         if payload?.type?.type?.lowercased() == "Image Only".lowercased(){
-           view.addSubview(imageView)
+            dismissButton.tintColor = .darkGray
+            imageView.contentMode = .scaleAspectFit
+            view.addSubview(imageView)
             view.addSubview(dismissButton)
-
-
+            view.addSubview(buttonStackView)
+           
             NSLayoutConstraint.activate([
                 // Main stack view constraints
-                imageView.topAnchor.constraint(equalTo: view.topAnchor ),
+                imageView.topAnchor.constraint(equalTo: view.topAnchor),
                 imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 imageView.trailingAnchor.constraint(equalTo:view.trailingAnchor ),
-                imageView.bottomAnchor.constraint(equalTo:view.bottomAnchor ),
-                ])
+                imageView.bottomAnchor.constraint(equalTo:buttonStackView.bottomAnchor ),
+                dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+                dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                dismissButton.widthAnchor.constraint(equalToConstant: 30),
+                dismissButton.heightAnchor.constraint(equalToConstant: 30),
+                buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+                buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
+              
+            ])
         }
+       
         else {
             
-            
+            let labelStackView = setupLabelStackView()
             let labelView = UIView()
             labelView.translatesAutoresizingMaskIntoConstraints = false
             labelView.addSubview(labelStackView)
-            //        mainStackView.addArrangedSubview(labelView)
             
             labelStackView.addArrangedSubview(createTitle(title: title ?? ""))
             labelStackView.addArrangedSubview(createDescription(description: description ?? ""))
@@ -283,6 +276,7 @@ public class InAppNotificationViewController: UIViewController {
                 mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 
                 
+                
             ])
             
             if let buttonArray = buttonArray, !buttonArray.isEmpty {
@@ -298,10 +292,10 @@ public class InAppNotificationViewController: UIViewController {
                 ])
             }
         }
-         
+        
         NSLayoutConstraint.activate([
             dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             dismissButton.widthAnchor.constraint(equalToConstant: 30),
             dismissButton.heightAnchor.constraint(equalToConstant: 30),
         ])
@@ -313,21 +307,19 @@ public class InAppNotificationViewController: UIViewController {
         let dismissButton = setupDismissButton()
         let labelStackView = setupLabelStackView()
         dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-        labelStackView.addArrangedSubview(createTitle(title: title ?? "Hello Dude"))
-        labelStackView.addArrangedSubview(createDescription(description: description ?? "What are you doing!"))
+        labelStackView.addArrangedSubview(createTitle(title: title ?? ""))
+        labelStackView.addArrangedSubview(createDescription(description: description ?? ""))
         mainStackView.addArrangedSubview(imageView)
         mainStackView.addArrangedSubview(labelStackView)
         
         view.addSubview(buttonStackView)
         view.addSubview(dismissButton)
         
-        
-        // Add constraints for 'top' orientation
         NSLayoutConstraint.activate([
             // Main stack view constraints
             mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             mainStackView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -10),
             
             // Button stack view constraints
@@ -337,10 +329,11 @@ public class InAppNotificationViewController: UIViewController {
             // buttonStackView.heightAnchor.constraint(equalToConstant: 30),
             
             dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             mainStackView.bottomAnchor.constraint(greaterThanOrEqualTo: labelStackView.bottomAnchor, constant: 10)
         ])
-        let subview2Width = imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3)
+      
+        let subview2Width = imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
         NSLayoutConstraint.activate([subview2Width])
     }
     func setupFullScreen(title: String?, description: String?, titleColor: String?, descriptionFontColor: String?, sizeForTitle: Int?, sizeForDescription: Int?, imageURLs: [String]?, buttonArray: [WigzoButton]?){
@@ -353,69 +346,67 @@ public class InAppNotificationViewController: UIViewController {
         dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         labelStackView.addArrangedSubview(createTitle(title: title ?? ""))
         labelStackView.addArrangedSubview(createDescription(description: description ?? ""))
-//        mainStackView.addArrangedSubview(imageView)
-//        mainStackView.addArrangedSubview(labelStackView)
+        //        mainStackView.addArrangedSubview(imageView)
+        //        mainStackView.addArrangedSubview(labelStackView)
         
         view.addSubview(imageView)
         view.addSubview(labelStackView)
         view.addSubview(buttonStackView)
         view.addSubview(dismissButton)
         NSLayoutConstraint.activate([
-        imageView.topAnchor.constraint(equalTo: view.topAnchor),
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        
-        labelStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),  // Adjust the constant value
-        labelStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-        labelStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-        
-        // Button stack view constraints
-        buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-        buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-        buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-        
-        // Dismiss button constraints
-        dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
-        dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        dismissButton.heightAnchor.constraint(equalToConstant: 30),
-        dismissButton.widthAnchor.constraint(equalToConstant: 30),
-                                           ])
-        
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            labelStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),  // Adjust the constant value
+            labelStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            labelStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            
+            // Button stack view constraints
+            buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            
+            // Dismiss button constraints
+            dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            dismissButton.heightAnchor.constraint(equalToConstant: 30),
+            dismissButton.widthAnchor.constraint(equalToConstant: 30),
+        ])
         
     }
-
-
+    
     func setupMainStackView(templateOrientation: String) -> UIStackView {
         // Setup main stack view
         let mainStackView = UIStackView()
         switch templateOrientation {
-            case "top":
-                mainStackView.axis = .horizontal
-                mainStackView.distribution = .fillProportionally
-            case "center":
-                mainStackView.axis = .vertical
-                mainStackView.distribution = .fill
-            case "bottom":
-                mainStackView.axis = .horizontal
-                mainStackView.distribution = .fillProportionally  // You can adjust this distribution as needed
-            case "fullScreen":
+        case "top":
             mainStackView.axis = .horizontal
             mainStackView.distribution = .fillProportionally
-            default:
-                break
-            }
+        case "center":
+            mainStackView.axis = .vertical
+            mainStackView.distribution = .fill
+        case "bottom":
+            mainStackView.axis = .horizontal
+            mainStackView.distribution = .fillProportionally  // You can adjust this distribution as needed
+        case "fullScreen":
+            mainStackView.axis = .horizontal
+            mainStackView.distribution = .fillProportionally
+        default:
+            break
+        }
         mainStackView.spacing = 10
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mainStackView)
         return mainStackView
     }
-
+    
     func setupButtonStackView(buttonArray:[WigzoButton]?) -> UIStackView {
         // Setup button stack view
         let buttonStackView = UIStackView()
         view.addSubview(buttonStackView)
-
+        
         guard let buttonArray = buttonArray else { return buttonStackView }
         
         buttonStackView.axis = payload?.notificationDetails?.buttonOrientation?.lowercased() == "horizontal".lowercased() ? .horizontal : .vertical
@@ -427,68 +418,62 @@ public class InAppNotificationViewController: UIViewController {
         for case let (buttonIndex, buttonObj) in buttonArray.enumerated() where !(buttonObj.buttonName?.isEmpty ?? false) {
             let button = UIButton(type: .system)
             button.setTitle(buttonObj.buttonName, for: .normal)
-           // button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-
             button.translatesAutoresizingMaskIntoConstraints = false
-
+            button.tag = buttonIndex
+            
             if buttonIndex == 0 {
                 //let size = WigzoUtil.extractFontSize(from: buttonObj.buttonFontSize!)
                 let size = WigzoUtil.extractFontSize(from: buttonObj.buttonFontSize ?? "14")
                 button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-
-
+               
                 button.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(size ?? 14))
-                let fontColor = UIColor(hex: buttonObj.buttonFontColor ?? "#fff")
+                let fontColor = UIColor(hex: buttonObj.buttonFontColor ?? "")
                 button.setTitleColor(fontColor, for: .normal)
                 button.layer.cornerRadius = 5
-                button.backgroundColor = UIColor(hex: buttonObj.buttonColor ?? "#fff")
+                button.backgroundColor = UIColor(hex: buttonObj.buttonColor ?? "")
                 button.layer.borderColor = UIColor.black.cgColor
                 button.layer.borderWidth = 1.0
             } else {
-                let fontColor = UIColor(hex: buttonObj.buttonFontColor ?? "fff")
+                let fontColor = UIColor(hex: buttonObj.buttonFontColor ?? "")
                 button.setTitleColor(fontColor, for: .normal)
                 let size = WigzoUtil.extractFontSize(from: buttonObj.buttonFontSize ?? "14")
                 button.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(size ?? 14))
                 button.layer.cornerRadius = 5
-                button.backgroundColor = UIColor(hex: buttonObj.buttonColor ?? "#fff")
+                button.backgroundColor = UIColor(hex: buttonObj.buttonColor ?? "")
                 button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-
+                
             }
             button.setContentCompressionResistancePriority(.required, for: .vertical)
-
+            
             buttonStackView.addArrangedSubview(button)
         }
-
+        
         return buttonStackView
     }
     func createTitle(title: String) -> UILabel {
         // Title label
-      
+        
         let titleLabel = UILabel()
         titleLabel.text = title
-        //titleLabel.textColor = UIColor(hex: titleColor ?? "#fff")
         let titleColorString = payload?.notificationDetails?.titleColor ?? ""
         titleLabel.textColor = UIColor(hex: titleColorString)
-
+        
         titleLabel.numberOfLines = 0
         if let textAlignmentString = payload?.notificationDetails?.textAllignment {
-                // Convert the string value to NSTextAlignment
-                if let textAlignment = textAlignmentFromString(textAlignmentString) {
-                    titleLabel.textAlignment = textAlignment
-                } else {
-                    // Default to left alignment if the conversion fails
-                    titleLabel.textAlignment = .left
-                }
+            // Convert the string value to NSTextAlignment
+            if let textAlignment = textAlignmentFromString(textAlignmentString) {
+                titleLabel.textAlignment = textAlignment
             } else {
-                // Default to left alignment if the value is nil
+                // Default to left alignment if the conversion fails
                 titleLabel.textAlignment = .left
             }
-      //  titleLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForTitle ?? 14))
-           let sizeForTitle = WigzoUtil.extractFontSize(from: payload?.notificationDetails?.titleFontSize ?? "") ?? 14
-           titleLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForTitle))
-        // Description label
+        } else {
+            titleLabel.textAlignment = .left
+        }
+        let sizeForTitle = WigzoUtil.extractFontSize(from: payload?.notificationDetails?.titleFontSize ?? "") ?? 14
+        titleLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForTitle))
         
-
+        
         return titleLabel
     }
     func textAlignmentFromString(_ alignmentString: String) -> NSTextAlignment? {
@@ -505,30 +490,27 @@ public class InAppNotificationViewController: UIViewController {
     }
     func createDescription(description: String) -> UILabel {
         // Title label
-    
+        
         // Description label
         let descriptionLabel = UILabel()
         descriptionLabel.text = description
         descriptionLabel.numberOfLines = 0
         if let textAlignmentString = payload?.notificationDetails?.textAllignment {
-                // Convert the string value to NSTextAlignment
-                if let textAlignment = textAlignmentFromString(textAlignmentString) {
-                    descriptionLabel.textAlignment = textAlignment
-                } else {
-                    // Default to left alignment if the conversion fails
-                    descriptionLabel.textAlignment = .left
-                }
+            // Convert the string value to NSTextAlignment
+            if let textAlignment = textAlignmentFromString(textAlignmentString) {
+                descriptionLabel.textAlignment = textAlignment
             } else {
-                // Default to left alignment if the value is nil
+                // Default to left alignment if the conversion fails
                 descriptionLabel.textAlignment = .left
             }
-        //descriptionLabel.textColor = UIColor(hex: descriptionFontColor ?? "#fff")
-        //descriptionLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForDescription ?? 14))
+        } else {
+            // Default to left alignment if the value is nil
+            descriptionLabel.textAlignment = .left
+        }
         let descriptionFontColorString = payload?.notificationDetails?.descriptionFontColor ?? ""
-            descriptionLabel.textColor = UIColor(hex: descriptionFontColorString)
+        descriptionLabel.textColor = UIColor(hex: descriptionFontColorString)
         let sizeForDescription = WigzoUtil.extractFontSize(from: payload?.notificationDetails?.descriptionFontSize ?? "") ?? 14
-           descriptionLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForDescription))
-
+        descriptionLabel.font = UIFont.systemFont(ofSize: CGFloat(sizeForDescription))
         return descriptionLabel
     }
     
@@ -536,18 +518,15 @@ public class InAppNotificationViewController: UIViewController {
         // Setup label stack view
         let labelStackView = UIStackView()
         labelStackView.axis = .vertical
-//        labelStackView.alignment = .top
         labelStackView.distribution = .fillProportionally
         labelStackView.spacing = 10
         labelStackView.translatesAutoresizingMaskIntoConstraints = false
-        // Add any additional setup for label stack view as needed
         return labelStackView
     }
     func setupDismissButton() -> UIButton {
         let dismissButton = UIButton(type: .custom)
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
         
-        // Set the custom image as the button's background image
         var dismissImage = UIImage()
         if #available(iOS 13.0, *) {
             dismissImage = UIImage(systemName: "xmark.circle.fill")!
@@ -561,41 +540,30 @@ public class InAppNotificationViewController: UIViewController {
         
         // Add the dismiss button to your view
         view.addSubview(dismissButton)
-
-        // Add additional setup for the dismiss button as needed
-        // ...
-
         return dismissButton
     }
     func setupImageView(templateOrientation: String, imageURLs: [String]?) -> UIImageView {
         let imageView = UIImageView()
         if let notificationType = payload?.type?.type, notificationType.lowercased() == "Text Only" {
-                    // Type is "Text Only", hide image and button
-                    imageView.isHidden = true
-                   
-                } else {
-                    // Type is not "Text Only", show image and button
-                    imageView.isHidden = false
-                }
+            imageView.isHidden = true
+            
+        } else {
+            imageView.isHidden = false
+        }
         guard let imageArray = imageURLs, imageArray.count > 0 else {
             return imageView
         }
-        
-//        guard let imageArray = imageURLs, !imageArray.isEmpty else {
-//                imageView.isHidden = true // Hide the image view if imageURLs is empty
-//                return imageView
-//            }
-        
+       
         if let imageURLString = imageArray.first, !imageURLString.isEmpty {
             switch templateOrientation {
             case "top":
                 imageView.contentMode = .scaleAspectFit
             case "center":
-                imageView.contentMode = .scaleAspectFill
+                imageView.contentMode = .scaleAspectFit
             case "bottom":
-                imageView.contentMode = .scaleAspectFit 
+                imageView.contentMode = .scaleAspectFit
             case "fullScreen":
-                imageView.contentMode = .scaleAspectFill // You can adjust this mode as needed
+                imageView.contentMode = .scaleAspectFit // You can adjust this mode as needed
             default:
                 break
             }
@@ -625,48 +593,60 @@ public class InAppNotificationViewController: UIViewController {
         // Implement the action to dismiss the view here
         self.view.removeFromSuperview()
     }
-
-  
+    
+    
     @objc func buttonTapped(sender: UIButton) {
         guard let buttonArray = payload?.button, sender.tag < buttonArray.count else {
             return
         }
-
-        let buttonObj = buttonArray[sender.tag]
-
-        // Open the URL associated with the tapped button
-        if let buttonURLString = buttonObj.buttonURL, let buttonURL = URL(string: buttonURLString) {
-            if UIApplication.shared.canOpenURL(buttonURL) {
-                UIApplication.shared.open(buttonURL, options: [:], completionHandler: nil)
-            } else {
-                // Handle the case where the URL cannot be opened
-                print("Unable to open URL: \(buttonURLString)")
+        
+        if sender.tag == 0{
+            let buttonObj1 = buttonArray[sender.tag]
+            // Open the URL associated with the tapped button
+            if let buttonURLString = buttonObj1.buttonURL, let buttonURL = URL(string: buttonURLString) {
+                if UIApplication.shared.canOpenURL(buttonURL) {
+                    UIApplication.shared.open(buttonURL, options: [:], completionHandler: nil)
+                } else {
+                    // Handle the case where the URL cannot be opened
+                    print("Unable to open URL: \(buttonURLString)")
+                }
+            }
+        }
+        if sender.tag == 1{
+            let buttonObj2 = buttonArray[sender.tag]
+            
+            if let buttonURLString = buttonObj2.buttonURL, let buttonURL = URL(string: buttonURLString) {
+                if UIApplication.shared.canOpenURL(buttonURL) {
+                    UIApplication.shared.open(buttonURL, options: [:], completionHandler: nil)
+                } else {
+                    // Handle the case where the URL cannot be opened
+                    print("Unable to open URL: \(buttonURLString)")
+                }
             }
         }
     }
-   
-       @objc func dismissButtonTapped() {
-           // Implement the action to dismiss the view here
-           self.view.removeFromSuperview()
-   
-       }
-
-    // MARK: - Actions
-
     
+    @objc func dismissButtonTapped() {
+        // Implement the action to dismiss the view here
+        self.view.removeFromSuperview()
+        
+    }
+    
+    // MARK: - Actions
+  
 }
 
 extension UIColor {
     convenience init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-
+        
         var rgb: UInt64 = 0
-
+        
         guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else {
             return nil
         }
-
+        
         self.init(
             red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgb & 0x00FF00) >> 8) / 255.0,

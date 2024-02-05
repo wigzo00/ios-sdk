@@ -63,16 +63,7 @@ public class Wigzo {
         
         showPushNotification(userInfo)
     }
-    
-//    private static func showPushNotification(_ userInfo: [String: Any]) {
-//        if #available(iOS 13.0, *) {
-//            guard let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: []) else { return }
-//            let payloadData: WigzoNotification1 = try! JSONDecoder().decode(WigzoNotification1.self, from: jsonData)
-//            let helper = HelperClass()
-//            helper.showInAppNotificationViewController(payloadJson: payloadData)
-//        }
-//        
-//    }
+   
     // Modify the showPushNotification method in your Wigzo class
     private static func convertStringToDictionary(text: String) -> [String: Any]? {
             if let data = text.data(using: .utf8) {
@@ -111,6 +102,5 @@ public class Wigzo {
             // You might want to log or ignore notifications with unknown pushType values
         }
     }
-    
-
+  
 }

@@ -37,9 +37,9 @@ public class Task {
             print("url",postUrl)
             ConnectionStream().postJson(url: postUrl, data: preparedData, headers: nil) {
                 data, urlResponse, error in
-             // print("received data", data!)
-               // print("received URL RESPONSE", urlResponse!)
-               // print("error",error?.localizedDescription)
+                print("received URL", urlResponse?.url)
+                print("received data", data)
+                print("error",error?.localizedDescription)
             }
         }
     }
